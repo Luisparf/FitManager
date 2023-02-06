@@ -17499,6 +17499,9 @@ __webpack_require__.r(__webpack_exports__);
   resolve: function resolve(name) {
     return __webpack_require__("./resources/js/Pages sync recursive ^\\.\\/.*$")("./".concat(name));
   },
+  title: function title(_title) {
+    return _title ? "".concat(_title, " - M5") : 'M5';
+  },
   setup: function setup(_ref) {
     var el = _ref.el,
       App = _ref.App,
@@ -19576,7 +19579,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n::-moz-selection{\n    color:#fff;\n    background:#e53b23;\n}\n::selection{\n    color:#fff;\n    background:#e53b23;\n}\n  ", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n::-moz-selection {\n  color: #fff;\n  background: #e53b23;\n}\n::selection {\n  color: #fff;\n  background: #e53b23;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
