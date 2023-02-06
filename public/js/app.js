@@ -17429,7 +17429,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_TextInput__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/TextInput */ "./resources/js/components/TextInput.vue");
 
 
-// import TextInput from '@Sha/red/TextInput'
+// import LoadingButton from '../../components/LoadingButton'
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -17440,8 +17440,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       form: this.$inertia.form({
         email: 'user1@example.com',
-        password: 'secret',
-        registerActive: false
+        password: 'secret'
+        // registerActive: false
         // remember: false,
       })
     };
@@ -17677,6 +17677,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 8 /* PROPS */, ["modelValue", "error"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "submit",
     "class": "btn btn-primary",
+    label: "entrar",
     onClick: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.login && $options.login.apply($options, arguments);
     }, ["prevent"]))

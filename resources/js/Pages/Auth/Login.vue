@@ -19,7 +19,7 @@
                                     placeholder="Email" required />
                                 <text-input v-model="form.password" type="password" placeholder="Password"
                                     :error="form.errors.password" required />
-                                <input type="submit" class="btn btn-primary" @click.prevent="login">
+                                <input type="submit" class="btn btn-primary" label='entrar' @click.prevent="login">
                                 <p>Não tem uma conta?? <a href="#"
                                         @click="registerActive = !registerActive, emptyFields = false">Registre-se
                                         aqui</a>
@@ -135,19 +135,20 @@ p {
 <script>
 import { Head } from '@inertiajs/vue3'
 import TextInput from '../../components/TextInput'
-// import TextInput from '@Sha/red/TextInput'
+// import LoadingButton from '../../components/LoadingButton'
 
 export default {
     components: {
         Head,
         TextInput,
+
     },
     data() {
         return {
             form: this.$inertia.form({
                 email: 'user1@example.com',
                 password: 'secret',
-                registerActive: false
+                // registerActive: false
                 // remember: false,
             }),
         }
