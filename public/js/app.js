@@ -17500,7 +17500,7 @@ __webpack_require__.r(__webpack_exports__);
     return __webpack_require__("./resources/js/Pages sync recursive ^\\.\\/.*$")("./".concat(name));
   },
   title: function title(_title) {
-    return _title ? "".concat(_title, " - M5") : 'M5';
+    return _title ? "".concat(_title, " - FitManager") : 'FitManager';
   },
   setup: function setup(_ref) {
     var el = _ref.el,
