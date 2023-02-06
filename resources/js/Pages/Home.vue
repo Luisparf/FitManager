@@ -5,12 +5,12 @@
   <span>Hi there</span>
 </template>
 
-<style type="text/css">
+<!-- <style type="text/css">
 ::selection {
   color: #fff;
   background: #e53b23;
 }
-</style>
+</style> -->
 
 <script>
 import { Head } from '@inertiajs/vue3'
