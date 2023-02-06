@@ -14,12 +14,12 @@
                     <div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
                         <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
                             <h1>Entrar</h1>
-                            <form class="form-group" @submit.prevent="login">
-                                <input v-model="form.emailLogin" type="email" class="form-control" placeholder="Email"
-                                    required>
-                                <input v-model="form.passwordLogin" type="password" class="form-control"
-                                    placeholder="Password" required>
-                                <input type="submit" class="btn btn-primary">
+                            <form class="form-group">
+                                <text-input class='' v-model="form.email" :error="form.errors.email" type="email"
+                                    placeholder="Email" required />
+                                <text-input v-model="form.password" type="password" placeholder="Password"
+                                    :error="form.errors.password" required />
+                                <input type="submit" class="btn btn-primary" @click.prevent="login">
                                 <p>Não tem uma conta?? <a href="#"
                                         @click="registerActive = !registerActive, emptyFields = false">Registre-se
                                         aqui</a>
@@ -134,23 +134,21 @@ p {
 
 <script>
 import { Head } from '@inertiajs/vue3'
-//   import Logo from '@/Shared/Logo'
-//   import TextInput from '@/Shared/TextInput'
-//   import LoadingButton from '@/Shared/LoadingButton'
+import TextInput from '../../components/TextInput'
+// import TextInput from '@Sha/red/TextInput'
 
 export default {
     components: {
         Head,
-        //   LoadingButton,
-        //   Logo,
-        //   TextInput,
+        TextInput,
     },
     data() {
         return {
             form: this.$inertia.form({
-                emailLogin: 'user1@example.com',
-                passwordLogin: 'secret',
-                remember: false,
+                email: 'user1@example.com',
+                password: 'secret',
+                registerActive: false
+                // remember: false,
             }),
         }
     },

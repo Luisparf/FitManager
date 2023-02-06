@@ -13,13 +13,13 @@
         <div class="row">
           <div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
             <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
-              <h1>Entrar</h1>
+              <h1>Entrarr</h1>
               <form class="form-group">
                 <input v-model="form.emailLogin" type="email" class="form-control" placeholder="Email" required>
                 <input v-model="form.passwordLogin" type="password" class="form-control" placeholder="Password"
                   required>
                 <input type="submit" class="btn btn-primary" @click="doLogin">
-                <p>Não tem uma conta?? <a href="#"
+                <p>Não tem uma conta? <a href="#"
                     @click="registerActive = !registerActive, emptyFields = false">Registre-se aqui</a>
                 </p>
                 <p><a href="#">Esqueceu sua senha?</a></p>
@@ -132,12 +132,12 @@ p {
 import { Head } from '@inertiajs/vue3'
 //   import Logo from '@/Shared/Logo'
 //   import TextInput from '@/Shared/TextInput'
-//   import LoadingButton from '@/Shared/LoadingButton'
+import LoadingButton from '../Shared/LoadingButton'
 
 export default {
   components: {
     Head,
-    //   LoadingButton,
+    LoadingButton,
     //   Logo,
     //   TextInput,
   },
