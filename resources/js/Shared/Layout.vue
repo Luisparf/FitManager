@@ -60,12 +60,9 @@
         </div>
         <div class="md:flex  md:flex-grow md:overflow-hidden">
 
-          <main-menu-admin v-if="auth.user.role == 'A'"
+          <main-menu v-if="auth.user.role == 'A'"
             class="hidden  flex-shrink-0 p-12 w-56 overflow-y-auto md:block" />
-          <main-menu-client v-if="auth.user.role == 'C'"
-            class="hidden  flex-shrink-0 p-12 w-56 overflow-y-auto md:block" />
-          <main-menu-motoboy v-if="auth.user.role == 'M'"
-            class="hidden  flex-shrink-0 p-12 w-56 overflow-y-auto md:block" />
+
           <div class="px-4 py-8  md:flex-1 md:p-12 md:overflow-y-auto" scroll-region>
             <flash-messages />
             <slot />
@@ -77,12 +74,10 @@
 </template>
 
 <script>
-import { Link } from '@inertiajs/inertia-vue3'
+import { Link } from '@inertiajs/vue3'
 import Icon from '@/Shared/Icon'
 import Dropdown from '@/Shared/Dropdown'
-import MainMenuAdmin from '@/Shared/MainMenuAdmin'
-import MainMenuClient from '@/Shared/MainMenuClient'
-import MainMenuMotoboy from '@/Shared/MainMenuMotoboy'
+import MainMenu from '@/Shared/MainMenu'
 import FlashMessages from '@/Shared/FlashMessages'
 
 export default {
@@ -91,10 +86,9 @@ export default {
     // FlashMessages,
     Icon,
     Link,
-    Logo,
-    MainMenuAdmin,
-    MainMenuClient,
-    MainMenuMotoboy
+    // Logo,
+    MainMenu,
+
   },
   props: {
     auth: Object,
