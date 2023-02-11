@@ -7,7 +7,6 @@
           <div
             class="flex items-center justify-between px-6 py-4 bg-[#1e1e21] md:flex-shrink-0 md:justify-center md:w-56">
             <Link class="mt-1" href="/">
-            <logo class=" justify-between md:justify-center" width="80" height="80" />
             </Link>
             <dropdown class="md:hidden" placement="bottom-end">
               <template #default>
@@ -80,7 +79,6 @@
 <script>
 import { Link } from '@inertiajs/inertia-vue3'
 import Icon from '@/Shared/Icon'
-import Logo from '@/Shared/Logo'
 import Dropdown from '@/Shared/Dropdown'
 import MainMenuAdmin from '@/Shared/MainMenuAdmin'
 import MainMenuClient from '@/Shared/MainMenuClient'

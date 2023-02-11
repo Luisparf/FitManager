@@ -34,7 +34,7 @@ module.exports = {
     },
     extend: {
       borderColor: theme => ({
-        DEFAULT: theme('colors.gray.200', 'currentColor'),
+        DEFAULT: theme('colors.red.200', 'currentColor'),
       }),
       fontFamily: {
         sans: ['Cerebri Sans', ...defaultTheme.fontFamily.mono],
@@ -43,6 +43,9 @@ module.exports = {
         outline: '0 0 0 2px ' + theme('colors.red.400'),
       }),
       fill: theme => theme('colors'),
+      backgroundImage: {
+        'gym': "url('/gym.jpeg')",
+      },
     },
   },
   variants: {

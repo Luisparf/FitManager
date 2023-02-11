@@ -9,8 +9,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Home',[
-            'name' => 'M5'
+        return Inertia::render('Home', [
+            'name' => 'FitManager'
         ]);
     }
 }

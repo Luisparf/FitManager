@@ -1,4 +1,8 @@
 const mix = require('laravel-mix');
+const process = require('process')
+const cssImport = require('postcss-import')
+const cssNesting = require('postcss-nesting')
+const webpackConfig = require('./webpack.config')
 
 /*
  |--------------------------------------------------------------------------
@@ -13,4 +17,13 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .vue()
-    .sass('resources/sass/app.scss', 'public/css');
+    .webpackConfig(webpackConfig)
+    .sass('resources/sass/app.scss', 'public/css')
+    .postCss('resources/css/app.css', 'public/css', [
+        // prettier-ignore
+        cssImport(),
+        cssNesting(),
+        require('tailwindcss'),
+    ])
+    .version()
+    .sourceMaps();

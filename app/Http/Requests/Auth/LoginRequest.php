@@ -49,9 +49,12 @@ class LoginRequest extends FormRequest
         // $results = DB::select('select * from users where id = 1');
 
         // dd($results);
+        $s = 'string';
 
         if (!Auth::attempt($this->only('email', 'password'))) {
-            RateLimiter::hit($this->throttleKey());
+            // RateLimiter::hit($this->throttleKey());
+
+            // dd($s);
 
             throw ValidationException::withMessages([
                 'email' => __('auth.failed'),

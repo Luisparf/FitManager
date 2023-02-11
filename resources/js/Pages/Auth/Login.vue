@@ -1,164 +1,66 @@
 <template>
 
-
-    <div id="app">
-
-        <div class="login-page">
-            <transition name="fade">
-                <div v-if="!registerActive" class="wallpaper-login"></div>
-            </transition>
-            <div class="wallpaper-register"></div>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
-                        <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
-                            <h1>Entrar</h1>
-                            <form class="form-group">
-                                <text-input class='' v-model="form.email" :error="form.errors.email" type="email"
-                                    placeholder="Email" required />
-                                <text-input v-model="form.password" type="password" placeholder="Password"
-                                    :error="form.errors.password" required />
-                                <input type="submit" class="btn btn-primary" label='entrar' @click.prevent="login">
-                                <p>Não tem uma conta?? <a href="#"
-                                        @click="registerActive = !registerActive, emptyFields = false">Registre-se
-                                        aqui</a>
-                                </p>
-                                <p><a href="#">Esqueceu sua senha?</a></p>
-                            </form>
-                        </div>
-
-                        <div v-else class="card register" v-bind:class="{ error: emptyFields }">
-                            <h1>Registre-se</h1>
-                            <form class="form-group">
-                                <input v-model="emailReg" type="email" class="form-control" placeholder="Email"
-                                    required>
-                                <input v-model="passwordReg" type="password" class="form-control" placeholder="Password"
-                                    required>
-                                <input v-model="confirmReg" type="password" class="form-control"
-                                    placeholder="Confirm Password" required>
-                                <input type="submit" class="btn btn-primary" @click="doRegister">
-                                <p>Já tem uma conta? <a href="#"
-                                        @click="registerActive = !registerActive, emptyFields = false">Entre</a>
-                                </p>
-                            </form>
-                        </div>
-                    </div>
+    <Head title="Login" />
+    <div :style="{'background-image':'url(https://images.pexels.com/photos/1552252/pexels-photo-1552252.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)'}" class="flex bg-no-repeat bg-cover bg-center bg-fixed items-center justify-center p-6 min-h-screen">
+        <div class="w-full max-w-md">
+            <!-- <logo class="block mx-auto w-full max-w-xs fill-white" height="50" /> -->
+            <form class="mt-8 bg-white rounded-lg shadow-xl overflow-hidden" @submit.prevent="login">
+                <div class="px-10 py-12">
+                    <h1 class="text-center text-3xl font-bold">Welcome Back!</h1>
+                    <div class="mt-6 mx-auto w-24 border-b-2" />
+                    <text-input v-model="form.email" :error="form.errors.email" class="mt-10 " label="Email" type="email"
+                        autofocus autocapitalize="off" />
+                    <text-input v-model="form.password" :error="form.errors.password" class="mt-6" label="Password"
+                        type="password" />
+                    <label class="flex items-center mt-6 select-none" for="remember">
+                        <input id="remember" v-model="form.remember" class="mr-1" type="checkbox" />
+                        <span class="text-sm">Remember Me</span>
+                    </label>
                 </div>
-
-            </div>
+                <div class="flex px-10 py-4 bg-orange-100 border-t border-orange-100">
+                    <loading-button :loading="form.processing" class="btn-red ml-auto"
+                        type="submit">Login</loading-button>
+                </div>
+            </form>
         </div>
-
     </div>
 </template>
 
-<style lang="scss">
-p {
-    line-height: 1rem;
-}
-
-.card {
-    padding: 20px;
-}
-
-.form-group {
-    input {
-        margin-bottom: 20px;
-    }
-}
-
-.login-page {
-    align-items: center;
-    display: flex;
-    height: 100vh;
-
-    .wallpaper-login {
-        background: url(https://images.pexels.com/photos/1552252/pexels-photo-1552252.jpeg) no-repeat center center;
-        background-size: cover;
-        height: 100%;
-        position: absolute;
-        width: 100%;
-    }
-
-    .fade-enter-active,
-    .fade-leave-active {
-        transition: opacity .5s;
-    }
-
-    .fade-enter,
-    .fade-leave-to {
-        opacity: 0;
-    }
-
-    .wallpaper-register {
-        background: url(https://images.pexels.com/photos/533671/pexels-photo-533671.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260) no-repeat center center;
-        background-size: cover;
-        height: 100%;
-        position: absolute;
-        width: 100%;
-        z-index: -1;
-    }
-
-    h1 {
-        margin-bottom: 1.5rem;
-    }
-}
-
-.error {
-    animation-name: errorShake;
-    animation-duration: 0.3s;
-}
-
-@keyframes errorShake {
-    0% {
-        transform: translateX(-25px);
-    }
-
-    25% {
-        transform: translateX(25px);
-    }
-
-    50% {
-        transform: translateX(-25px);
-    }
-
-    75% {
-        transform: translateX(25px);
-    }
-
-    100% {
-        transform: translateX(0);
-    }
+<style>
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  --tw-border-opacity: 1;
+  border-color: red;
+  --tw-ring-offset-shadow: red;
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 </style>
 
 <script>
 import { Head } from '@inertiajs/vue3'
-import TextInput from '../../components/TextInput'
-// import LoadingButton from '../../components/LoadingButton'
+import TextInput from '@/Shared/TextInput'
+import LoadingButton from '@/Shared/LoadingButton'
 
 export default {
     components: {
         Head,
+        LoadingButton,
         TextInput,
-
     },
     data() {
         return {
             form: this.$inertia.form({
                 email: 'user1@example.com',
                 password: 'secret',
-                // registerActive: false
-                // remember: false,
+                remember: false,
             }),
         }
     },
     methods: {
         login() {
             this.form.post('/login')
-        },
-        handleInput(event) {
-            document.cookie = "email=" + (event.target.value || "") + "; path=/";
         },
     },
 }
