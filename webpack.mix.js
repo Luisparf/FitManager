@@ -15,6 +15,17 @@ const webpackConfig = require('./webpack.config')
  |
  */
 
+//  mix.webpackConfig({
+//     // plugins: [
+//     //     ...
+//     // ],
+//     // resolve: {
+//     //    ...
+//     // },
+//     stats: {
+//          children: true
+//     }
+// });
 mix.js('resources/js/app.js', 'public/js')
     .vue()
     .webpackConfig(webpackConfig)

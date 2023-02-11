@@ -11487,14 +11487,14 @@ input:focus, select:focus, textarea:focus, button:focus, div:focus, a:focus, inp
 .mt-8 {
   margin-top: 2rem;
 }
-.ml-10 {
-  margin-left: 2.5rem;
+.-mb-8 {
+  margin-bottom: -2rem;
+}
+.-mr-6 {
+  margin-right: -1.5rem;
 }
 .block {
   display: block;
-}
-.inline {
-  display: inline;
 }
 .flex {
   display: flex;
@@ -11520,8 +11520,8 @@ input:focus, select:focus, textarea:focus, button:focus, div:focus, a:focus, inp
 .h-6 {
   height: 1.5rem;
 }
-.max-h-1 {
-  max-height: 0.25rem;
+.h-8 {
+  height: 2rem;
 }
 .min-h-screen {
   min-height: 100vh;
@@ -11556,6 +11556,9 @@ input:focus, select:focus, textarea:focus, button:focus, div:focus, a:focus, inp
 .w-screen {
   width: 100vw;
 }
+.w-8 {
+  width: 2rem;
+}
 .max-w-3xl {
   max-width: 48rem;
 }
@@ -11564,9 +11567,6 @@ input:focus, select:focus, textarea:focus, button:focus, div:focus, a:focus, inp
 }
 .max-w-xs {
   max-width: 20rem;
-}
-.max-w-full {
-  max-width: 100%;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -11618,9 +11618,6 @@ input:focus, select:focus, textarea:focus, button:focus, div:focus, a:focus, inp
 .overflow-y-auto {
   overflow-y: auto;
 }
-.overflow-x-hidden {
-  overflow-x: hidden;
-}
 .whitespace-nowrap {
   white-space: nowrap;
 }
@@ -11666,6 +11663,14 @@ input:focus, select:focus, textarea:focus, button:focus, div:focus, a:focus, inp
   --tw-border-opacity: 1;
   border-color: rgb(255 237 213 / var(--tw-border-opacity));
 }
+.border-gray-100 {
+  --tw-border-opacity: 1;
+  border-color: rgb(241 245 249 / var(--tw-border-opacity));
+}
+.border-red-100 {
+  --tw-border-opacity: 1;
+  border-color: rgb(254 226 226 / var(--tw-border-opacity));
+}
 .bg-\[\#1e1e21\] {
   --tw-bg-opacity: 1;
   background-color: rgb(30 30 33 / var(--tw-bg-opacity));
@@ -11701,6 +11706,14 @@ input:focus, select:focus, textarea:focus, button:focus, div:focus, a:focus, inp
 .bg-yellow-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(250 204 21 / var(--tw-bg-opacity));
+}
+.bg-gray-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 250 252 / var(--tw-bg-opacity));
+}
+.bg-red-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 242 242 / var(--tw-bg-opacity));
 }
 .bg-cover {
   background-size: cover;
@@ -11738,6 +11751,9 @@ input:focus, select:focus, textarea:focus, button:focus, div:focus, a:focus, inp
 .fill-yellow-800 {
   fill: #854d0e;
 }
+.fill-red-400 {
+  fill: #f87171;
+}
 .p-0 {
   padding: 0px;
 }
@@ -11752,6 +11768,9 @@ input:focus, select:focus, textarea:focus, button:focus, div:focus, a:focus, inp
 }
 .p-6 {
   padding: 1.5rem;
+}
+.p-8 {
+  padding: 2rem;
 }
 .px-10 {
   padding-left: 2.5rem;
@@ -11797,6 +11816,9 @@ input:focus, select:focus, textarea:focus, button:focus, div:focus, a:focus, inp
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
 .pb-4 {
   padding-bottom: 1rem;
 }
@@ -11809,8 +11831,11 @@ input:focus, select:focus, textarea:focus, button:focus, div:focus, a:focus, inp
 .pt-6 {
   padding-top: 1.5rem;
 }
-.pl-10 {
-  padding-left: 2.5rem;
+.pb-8 {
+  padding-bottom: 2rem;
+}
+.pr-6 {
+  padding-right: 1.5rem;
 }
 .text-left {
   text-align: left;
@@ -11878,6 +11903,22 @@ input:focus, select:focus, textarea:focus, button:focus, div:focus, a:focus, inp
   --tw-text-opacity: 1;
   color: rgb(133 77 14 / var(--tw-text-opacity));
 }
+.text-red-700 {
+  --tw-text-opacity: 1;
+  color: rgb(185 28 28 / var(--tw-text-opacity));
+}
+.text-indigo-400 {
+  --tw-text-opacity: 1;
+  color: rgb(120 134 215 / var(--tw-text-opacity));
+}
+.text-red-400 {
+  --tw-text-opacity: 1;
+  color: rgb(248 113 113 / var(--tw-text-opacity));
+}
+.text-red-600 {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+}
 .shadow {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
@@ -11903,6 +11944,10 @@ input:focus, select:focus, textarea:focus, button:focus, div:focus, a:focus, inp
 .focus-within\:bg-gray-100:focus-within {
   --tw-bg-opacity: 1;
   background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+}
+.focus-within\:bg-red-100:focus-within {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 226 226 / var(--tw-bg-opacity));
 }
 .hover\:bg-\[\#009900\]:hover {
   --tw-bg-opacity: 1;
@@ -11948,6 +11993,14 @@ input:focus, select:focus, textarea:focus, button:focus, div:focus, a:focus, inp
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
+.hover\:text-indigo-600:hover {
+  --tw-text-opacity: 1;
+  color: rgb(86 97 179 / var(--tw-text-opacity));
+}
+.hover\:text-red-600:hover {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+}
 .hover\:underline:hover {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
@@ -11965,10 +12018,6 @@ input:focus, select:focus, textarea:focus, button:focus, div:focus, a:focus, inp
 }
 .focus\:fill-red-600:focus {
   fill: #dc2626;
-}
-.focus\:text-indigo-500:focus {
-  --tw-text-opacity: 1;
-  color: rgb(101 116 205 / var(--tw-text-opacity));
 }
 .focus\:text-red-500:focus {
   --tw-text-opacity: 1;
@@ -12059,6 +12108,11 @@ input:focus, select:focus, textarea:focus, button:focus, div:focus, a:focus, inp
   .md\:py-0 {
     padding-top: 0px;
     padding-bottom: 0px;
+  }
+}
+@media (min-width: 1024px) {
+  .lg\:w-1\/2 {
+    width: 50%;
   }
 }
 

@@ -70,10 +70,10 @@
   /* padding-left: 2px; */
 }
 
-.v-sidebar-menu {
+/* .v-sidebar-menu {
   margin-top: 116px;
 
-}
+} */
 
 .v-sidebar-menu.vsm_expanded {
   width: 224px;
@@ -203,36 +203,20 @@ export default {
         },
 
         {
-          href: '/clients',
-          title: 'Clientes',
+          href: '/users',
+          title: 'Users',
           icon: 'fa-solid fa-users',
           // hiddenOnCollapse: false,
 
         },
 
-        // {
-        //   href: '/products',
-        //   title: 'Produtos',
-        //   icon: 'fa-sharp fa-solid fa-cart-shopping'
-        // },
-        // {
-        //   href: '/unitys',
-        //   title: 'Unidades',
-        //   icon: 'fa-sharp fa-solid fa-scale-balanced'
-        // },
-        {
-          href: '/motoboys',
-          title: 'Motoboys',
-          icon: 'fa-sharp fa-solid fa-motorcycle'
-        },
-        {
-          href: '/routes',
-          title: 'Rotas de Corrida',
-          icon: 'fa-sharp fa-solid fa-route',
 
-          // hiddenOnCollapse: true
-
+        {
+          href: '/treinos',
+          title: 'Treinos',
+          icon: 'fa-solid fa-dumbbell'
         },
+
       ]
     }
   },

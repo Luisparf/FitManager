@@ -60,7 +60,7 @@
         </div>
         <div class="md:flex  md:flex-grow md:overflow-hidden">
 
-          <main-menu v-if="auth.user.role == 'A'"
+          <main-menu
             class="hidden  flex-shrink-0 p-12 w-56 overflow-y-auto md:block" />
 
           <div class="px-4 py-8  md:flex-1 md:p-12 md:overflow-y-auto" scroll-region>
@@ -83,7 +83,7 @@ import FlashMessages from '@/Shared/FlashMessages'
 export default {
   components: {
     Dropdown,
-    // FlashMessages,
+    FlashMessages,
     Icon,
     Link,
     // Logo,
