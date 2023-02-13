@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Treinos de Academia</title>
+  <title>Treinos</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #F2F2F2;
+      background-color: #afadad;
     }
   
     h1 {
@@ -25,9 +25,11 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      background-color: #192249;
+      background-color: #151c3d;
       padding: 20px;
       border-radius: 10px;
+      border: solid 2.5px;
+      border-color: rgb(124, 5, 5);
     }
   
     .workout {
@@ -35,8 +37,10 @@
       margin: 20px;
       text-align: center;
       background-color: #c9743c;
-      border-radius: 10px;
+      border-radius: 5px;
       padding: 20px;
+      border: solid 2.5px;
+      border-color: black;
     }
   
     img {
@@ -44,9 +48,14 @@
       height: 250px;
       margin-bottom: 10px;
       border-radius: 10px;
+      border: solid 3px;
+      border-color: #000000;
       background-color: white;
     }
   
+    p{
+      font-weight: bold;
+    }
     #filter-category {
       padding: 10px;
       border-radius: 5px;
@@ -58,6 +67,7 @@
     .extra-info.show {
       display: block;
       color: black;
+      background-color: rgb(204, 185, 149);
    }
    .favorite-button{
     background-color: rgb(209, 155, 133);
@@ -89,19 +99,19 @@
 </head>
 
 <body>
-  <h1>Treinos disponíveis</h1>
+  <h1><b>Treinos disponíveis</b></h1>
 
   <form id="filter-form">
     <label for="filter-category">Filtrar por categoria:</label>
     <select id="filter-category">
       <option value="">Todas</option>
+      <option value="favoritos">Favoritos</option>
       <option value="peito">Peito</option>
       <option value="costas">Costas</option>
       <option value="pernas">Pernas</option>
       <option value="ombros">Ombros</option>
       <option value="biceps">Bíceps</option>
-      <option value="triceps">Tríceps</option>
-      <option value="favoritos">Favoritos</option>
+      <option value="triceps">Tríceps</option>      
     </select>
   </form>
 
