@@ -72,6 +72,11 @@ class User extends Authenticatable
         return $this->email === 'johndoe@example.com';
     }
 
+    public function isntOwner()
+    {
+        return $this->role !== 'Owner';
+    }
+
     public function scopeOrderByName($query)
     {
         $query->orderBy('name')->orderBy('name');

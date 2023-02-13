@@ -84,11 +84,11 @@ class UsersController extends Controller
             'name' => ['required', 'max:50'],
             'email' => ['required', 'max:50', 'email', Rule::unique('users')->ignore($user->id)],
             'password' => ['nullable'],
-            'owner' => ['required', 'boolean'],
+            'role' => ['required', 'enum'],
             'photo' => ['nullable', 'image'],
         ]);
 
-        $user->update(Request::only('name','email', 'owner'));
+        $user->update(Request::only('name','email'));
 
         if (Request::file('photo')) {
             $user->update(['photo_path' => Request::file('photo')->store('users')]);
