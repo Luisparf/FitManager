@@ -15,8 +15,8 @@ class CreateMaintenanceTable extends Migration
     {
         Schema::create('maintenance', function (Blueprint $table) {
             $table->id();
-            $table->string('maquina', 50);
             $table->text('descricao');
+            $table->string('maquina', 50);
             $table->string('local', 80);
             $table->string('empresa', 40);
             $table->dateTime('manutencao', $precision = 0);
