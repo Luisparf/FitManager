@@ -23,8 +23,10 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => 'secret', // password
             'remember_token' => Str::random(10),
+            'type' => 'A'
 
         ]);
-        \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(10)->create(['type' => 'C']);
+        \App\Models\User::factory(10)->create(['type' => 'P']);
     }
 }
