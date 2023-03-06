@@ -68,5 +68,10 @@ Route::put('users/{user}/restore', [UsersController::class, 'restore'])
     ->name('users.restore')
     ->middleware('auth');
 
-Route::get('/maintenance', [MaintenanceController::class, 'index'])
+// Maintenance
+
+Route::get('maintenance', [MaintenanceController::class, 'index'])
     ->name('maintenance');
+
+Route::get('maintenance/create', [MaintenanceController::class, 'create'])
+    ->name('maintenance.create');

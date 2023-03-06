@@ -14,12 +14,13 @@ class CreateMaintenanceTable extends Migration
     public function up()
     {
         Schema::create('maintenance', function (Blueprint $table) {
-            $table->id();
-            $table->text('descricao');
-            $table->string('maquina', 50);
+            $table->increments('id');
+            $table->text('description');
+            $table->string('machine', 50);
             $table->string('local', 80);
-            $table->string('empresa', 40);
-            $table->dateTime('manutencao', $precision = 0);
+            $table->string('company', 40);
+            $table->boolean('owner')->default(false);
+            $table->dateTime('dateMaintenance', $precision = 0);
             $table->timestamps();
         });
     }
