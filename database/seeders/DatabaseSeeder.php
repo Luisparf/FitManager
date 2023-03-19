@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
             'type' => 'A'
 
         ]);
-        \App\Models\User::factory(10)->create(['type' => 'C']);
+        \App\Models\User::factory(10)->create(['type' => 'A']);
+        \App\Models\User::factory(10)->create(['type' => 'F']);
         \App\Models\User::factory(10)->create(['type' => 'P']);
     }
 }
