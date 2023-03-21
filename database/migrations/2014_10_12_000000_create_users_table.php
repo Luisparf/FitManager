@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->integer('aluno_id')->nullable()->index();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('cpf')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->boolean('owner')->default(false);
             $table->string('password');

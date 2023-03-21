@@ -22,7 +22,8 @@ class UsersController extends Controller
             'users' => Auth::user()->account->users()
                 ->orderByName()
                 ->filter(Request::only('search', 'role', 'trashed'))
-                ->get()
+                ->paginate(10)
+                ->withQueryString()
                 ->transform(fn ($user) => [
                     'id' => $user->id,
                     'name' => $user->name,
