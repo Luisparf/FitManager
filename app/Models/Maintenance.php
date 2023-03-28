@@ -22,7 +22,7 @@ class Maintenance extends Model
         'dateMaintenance',
     ];
 
-    public function scopeOrderBymachine($query)
+    public function scopeOrderByMachine($query)
     {
         $query->orderBy('machine')->orderBy('machine');
     }

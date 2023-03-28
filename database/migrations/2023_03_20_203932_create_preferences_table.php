@@ -16,7 +16,7 @@ class CreatePreferencesTable extends Migration
         Schema::create('preferences', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('account_id')->index();
-            $table->string('objectives');
+            $table->enum('objectives', ['Slimming','Hypertrophy','Cardiorespiratory_Fitness','Muscle_Recovery','Muscle_Definition'])->default('Slimming');
             $table->string('restrictions');
             $table->dateTime('dateSchedule', $precision = 0);
             $table->string('muscleGroup');

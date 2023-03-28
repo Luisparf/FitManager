@@ -75,3 +75,8 @@ Route::get('maintenance', [MaintenanceController::class, 'index'])
 
 Route::get('maintenance/create', [MaintenanceController::class, 'create'])
     ->name('maintenance.create');
+
+//Preferences
+
+Route::get('preference/create', [PreferenceController::class, 'create'])
+    ->name('preference.create');

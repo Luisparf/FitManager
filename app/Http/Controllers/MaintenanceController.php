@@ -13,10 +13,10 @@ class MaintenanceController extends Controller
 {
     public function index(){
 
-        return Inertia::render('Users/Index', [
+        return Inertia::render('Maintenance/Index', [
             'filters' => Request::all('search', 'role', 'trashed'),
             'maintenance' => Auth::maintenance()
-                ->orderByName()
+                ->orderByMachine()
                 ->filter(Request::only('search', 'role', 'trashed'))
                 ->get()
                 ->transform(fn ($maintenance) => [
