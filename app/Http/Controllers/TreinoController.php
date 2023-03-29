@@ -15,9 +15,10 @@ class TreinoController extends Controller
     public function inserir_treino(Request $request){
         $regras = [
             'nome' => 'required|min:3|max:40',
-            'categoria' => 'required|min:4|max:40',
-            'descricao' => 'required:100',
-            'caminho_imagem' => 'required',
+            'categoria_id' => 'required',
+            'descricao' => 'min:3|max:200',
+            'info_extra' => 'max:500',
+            'caminho_imagem' => 'required'
         ];
         //mensagem específica ex: nome.required sobrepoe as gerais, ex: required
         $feedback = [
