@@ -9,7 +9,7 @@
         </h1>
         <img v-if="aluno.photo" class="block ml-4 w-8 h-8 rounded-full" :src="aluno.photo" />
       </div>
-      <trashed-message v-if="aluno.deleted_at" class="mb-6" @restore="restore"> This aluno has been deleted. </trashed-message>
+      <trashed-message v-if="aluno.deleted_at" class="mb-6" @restore="restore"> This aluno foi deletado. </trashed-message>
       <div class="max-w-3xl bg-white rounded-md shadow overflow-hidden">
         <form @submit.prevent="update">
           <div class="flex flex-wrap -mb-8 -mr-6 p-8">

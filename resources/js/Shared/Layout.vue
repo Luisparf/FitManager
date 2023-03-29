@@ -63,6 +63,9 @@
           <main-menu
             class="hidden  flex-shrink-0 p-12 w-56 overflow-y-auto md:block" />
 
+          <main-menu-aluno v-if="auth.user.type == 'Aluno'"
+            class="hidden  flex-shrink-0 p-12 w-56 overflow-y-auto md:block" />
+
           <div class="px-4 py-8  md:flex-1 md:p-12 md:overflow-y-auto" scroll-region>
             <flash-messages />
             <slot />
@@ -78,6 +81,7 @@ import { Link } from '@inertiajs/vue3'
 import Icon from '@/Shared/Icon'
 import Dropdown from '@/Shared/Dropdown'
 import MainMenu from '@/Shared/MainMenu'
+import MainMenuAluno from '@/Shared/MainMenuAluno'
 import FlashMessages from '@/Shared/FlashMessages'
 
 export default {
@@ -88,6 +92,7 @@ export default {
     Link,
     // Logo,
     MainMenu,
+    MainMenuAluno,
 
   },
   props: {

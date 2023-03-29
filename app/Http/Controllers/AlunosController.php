@@ -19,10 +19,10 @@ class AlunosController extends Controller
         // $s = 'string';
         // dd($s);
         return Inertia::render('Alunos/Index', [
-            'filters' => Request::all('search', 'role', 'trashed'),
+            'filters' => Request::all('search', 'type', 'trashed'),
             'alunos' => Auth::user()->account->alunos()
                 ->orderByName()
-                ->filter(Request::only('search', 'role', 'trashed'))
+                ->filter(Request::only('search', 'type', 'trashed'))
                 ->get()
                 ->transform(fn ($aluno) => [
                     'id' => $aluno->id,
