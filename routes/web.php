@@ -5,7 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UsersController;
-use App\Http\Controllers\TreinosController;
+use App\Http\Controllers\TreinoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,5 +70,4 @@ Route::put('users/{user}/restore', [UsersController::class, 'restore'])
 
 //treinos
 
-Route::get('/treinos', [TreinosController::class, 'index'])
-    ->name('treinos');
+Route::get('/treinos', [TreinoController::class, 'index'])->name('treinos');
