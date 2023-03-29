@@ -44,8 +44,8 @@ class UsersController extends Controller
     public function store()
     {
         Request::validate([
-            'name' => ['required', 'max:50'],
-            'type' => ['required', 'max:50'],
+            'name' => ['required', 'max:100'],
+            'type' => ['required', 'max:100'],
             'cpf' => ['required', 'max:50'],
             'email' => ['required', 'max:50', 'email', Rule::unique('users')],
             'password' => ['nullable'],
@@ -73,7 +73,8 @@ class UsersController extends Controller
                 'id' => $user->id,
                 'name' => $user->name,
                 'email' => $user->email,
-                'type' => $user->email,
+                'type' => $user->type,
+                'cpf' => $user->cpf,
                 'owner' => $user->owner,
                 'photo' => $user->photo_path ? URL::route('image', ['path' => $user->photo_path, 'w' => 60, 'h' => 60, 'fit' => 'crop']) : null,
                 'deleted_at' => $user->deleted_at,
@@ -88,9 +89,10 @@ class UsersController extends Controller
         }
 
         Request::validate([
-            'name' => ['required', 'max:50'],
-            'type' => ['required', 'max:50'],
-            'email' => ['required', 'max:50', 'email', Rule::unique('users')->ignore($user->id)],
+            'name' => ['required', 'max:100'],
+            'type' => ['required', 'max:100'],
+            'cpf' => ['required', 'max:50'],
+            'email' => ['required', 'max:100', 'email', Rule::unique('users')->ignore($user->id)],
             'password' => ['nullable'],
             'owner' => ['required', 'boolean'],
             'photo' => ['nullable', 'image'],
