@@ -224,6 +224,13 @@ export default {
           icon: 'fa-solid fa-person-swimming'
         },
 
+        {
+          href: '/funcionarios',
+          title: 'Funcionarios',
+          icon: 'fa-solid fa-tasks'
+        },
+
+
 
 
 

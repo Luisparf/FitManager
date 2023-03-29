@@ -45,6 +45,8 @@ class UsersController extends Controller
     {
         Request::validate([
             'name' => ['required', 'max:50'],
+            'type' => ['required', 'max:50'],
+            'cpf' => ['required', 'max:50'],
             'email' => ['required', 'max:50', 'email', Rule::unique('users')],
             'password' => ['nullable'],
             'owner' => ['required', 'boolean'],
@@ -54,6 +56,8 @@ class UsersController extends Controller
         Auth::user()->account->users()->create([
             'name' => Request::get('name'),
             'email' => Request::get('email'),
+            'cpf' => Request::get('cpf'),
+            'type' => Request::get('type'),
             'password' => Request::get('password'),
             'owner' => Request::get('owner'),
             'photo_path' => Request::file('photo') ? Request::file('photo')->store('users') : null,
@@ -69,6 +73,7 @@ class UsersController extends Controller
                 'id' => $user->id,
                 'name' => $user->name,
                 'email' => $user->email,
+                'type' => $user->email,
                 'owner' => $user->owner,
                 'photo' => $user->photo_path ? URL::route('image', ['path' => $user->photo_path, 'w' => 60, 'h' => 60, 'fit' => 'crop']) : null,
                 'deleted_at' => $user->deleted_at,
@@ -84,13 +89,14 @@ class UsersController extends Controller
 
         Request::validate([
             'name' => ['required', 'max:50'],
+            'type' => ['required', 'max:50'],
             'email' => ['required', 'max:50', 'email', Rule::unique('users')->ignore($user->id)],
             'password' => ['nullable'],
             'owner' => ['required', 'boolean'],
             'photo' => ['nullable', 'image'],
         ]);
 
-        $user->update(Request::only('name','email', 'owner'));
+        $user->update(Request::only('name','email', 'type'));
 
         if (Request::file('photo')) {
             $user->update(['photo_path' => Request::file('photo')->store('users')]);
