@@ -32,6 +32,8 @@
                     <span>{{ auth.user.name }}</span> -->
 
                     <span>{{ auth.user.name }}</span>
+                    <!-- <span >{{ auth.user.type }}</span> -->
+
                     <!-- <span>{{ auth.user.role }}</span> -->
                     <!-- <button type="button"
                                             class="text-white text-xs flex justify-between -mr-5 ml-3    font-medium rounded-sm"
@@ -60,11 +62,12 @@
         </div>
         <div class="md:flex  md:flex-grow md:overflow-hidden">
 
-          <main-menu
-            class="hidden  flex-shrink-0 p-12 w-56 overflow-y-auto md:block" />
-
           <main-menu-aluno v-if="auth.user.type == 'Aluno'"
             class="hidden  flex-shrink-0 p-12 w-56 overflow-y-auto md:block" />
+          <main-menu  v-if="auth.user.type == 'Funcionario'"
+            class="hidden  flex-shrink-0 p-12 w-56 overflow-y-auto md:block" />
+
+
 
           <div class="px-4 py-8  md:flex-1 md:p-12 md:overflow-y-auto" scroll-region>
             <flash-messages />

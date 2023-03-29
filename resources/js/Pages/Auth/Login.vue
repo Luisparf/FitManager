@@ -32,9 +32,9 @@
 .form-select:focus {
   --tw-border-opacity: 1;
   border-color: red;
-  --tw-ring-offset-shadow: red;
-  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+  /* --tw-ring-offset-shadow: ; */
+  /* --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color); */
+  /* box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000); */
 }
 </style>
 
@@ -52,7 +52,7 @@ export default {
     data() {
         return {
             form: this.$inertia.form({
-                email: 'user1@example.com',
+                email: 'funcionario@example.com',
                 password: 'secret',
                 remember: false,
             }),
