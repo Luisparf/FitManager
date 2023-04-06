@@ -1,5 +1,5 @@
 {{-- $slot --}}
-<form action={{ route('treinos') }} method="post">
+<form action={{ route('treinos') }} method="post" enctype="multipart/form-data">
     @csrf
     <input name="nome" value="{{ old('nome') }}" type="text" placeholder="Nome" class="{{ $classe }}">
     @if ($errors->has('nome'))
@@ -20,10 +20,9 @@
     <textarea name="info_extra" class="{{ $classe }}">{{ (old('info_extra') != '') ? old('info_extra') : 'Preencha aqui a informação extra' }}</textarea>
     {{ $errors->has('info_extra') ? $errors->first('info_extra') : '' }}
     <br>
-    <input name="caminho_imagem" value="{{ old('caminho_imagem') }}" type="text" placeholder="Caminho da imagem" class="{{ $classe }}">
+    <input name="caminho_imagem" id="caminho_imagem" value="{{ old('caminho_imagem') }}" type="file" placeholder="Upload da imagem" class = "{{ $classe }}">
     {{ $errors->has('caminho_imagem') ? $errors->first('caminho_imagem') : '' }}
     <br>
-
     <button type="submit" class="{{ $classe }}">ENVIAR</button>
 </form>
 

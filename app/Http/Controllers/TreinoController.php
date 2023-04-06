@@ -27,13 +27,13 @@ class TreinoController extends Controller
             'categoria_id' => 'required',
             'descricao' => 'min:3|max:200',
             'info_extra' => 'max:500',
-            'caminho_imagem' => 'required'
+            'caminho_imagem' => 'required|image|mimes:jpeg,jpg,png'
         ];
         //mensagem específica ex: nome.required sobrepoe as gerais, ex: required
         $feedback = [
             'min' => 'O campo :attribute precisa ter no mínimo 3 caracteres',
             'max' => 'O campo :attribute deve ter no máximo 40 caracteres',
-            'descricao.max' => 'A mensagem deve ter no máximo 100caracteres',
+            'descricao.max' => 'A mensagem deve ter no máximo 100 caracteres',
             'required' => 'O campo :attribute deve ser preenchido'
         ];
 
@@ -45,9 +45,16 @@ class TreinoController extends Controller
         $treino->categoria_id = $request->input('categoria_id');
         $treino->descricao = $request->input('descricao');
         $treino->info_extra = $request->input('info_extra');
-        $treino->caminho_imagem = $request->input('caminho_imagem');
+
+        $imagem = $request->file('caminho_imagem');
+        $caminho = $imagem->store('public/images/treinos');
+        //echo "$caminho";
+        $treino->caminho_imagem = str_replace('public/', 'storage/', $caminho);
+        //$treino->caminho_imagem = $caminho;
+        //foi preciso utilizar php artisan storage:link pra criar um link pra pasta storage no diretório public
+       
         $treino->save();
         //Treino::create($request->all());
-        return redirect()->route('treinos');
+        //return redirect()->route('treinos');
     }
 }

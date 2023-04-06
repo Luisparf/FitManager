@@ -17,14 +17,7 @@
       <option value="">Todas</option>
       @foreach($categorias as $categoria)
             <option value="{{ $categoria->id }}">{{ $categoria->categoria }}</option>
-      @endforeach
-      {{--<option value="favoritos">Favoritos</option>
-      <option value="peito">Peito</option>
-      <option value="costas">Costas</option>
-      <option value="pernas">Pernas</option>
-      <option value="ombros">Ombros</option>
-      <option value="biceps">Bíceps</option>
-      <option value="triceps">Tríceps</option> --}}     
+      @endforeach  
     </select>
   </form>
 
@@ -32,7 +25,7 @@
     @foreach($treinos as $treino)
       <div class="workout" data-category-id="{{ $treino->categoria->id }}"> {{--mudar category pra categoria dps--}}
         <h2>{{ $treino->nome }}</h2>
-        <img src="{{ asset('images/treinos/' . $treino->caminho_imagem) }}" alt="{{ $treino->nome }}">
+        <img src="{{ asset($treino->caminho_imagem) }}" alt="{{ $treino->nome }}"> {{--public/storage/images/treinos...--}}
         <p>{{ $treino->descricao }}</p>
         <button class="show-more-button">Ver mais</button>
       {{--@if(Auth::check())--}}

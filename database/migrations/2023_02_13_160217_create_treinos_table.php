@@ -20,7 +20,7 @@ class CreateTreinosTable extends Migration
             $table->unsignedBigInteger('categoria_id'); //mudar pra igual motivos_contatos_ip do sg
             $table->text('descricao');
             $table->text('info_extra')->nullable();
-            $table->string('caminho_imagem',50);
+            $table->string('caminho_imagem',200);
             $table->timestamps();
             $table->foreign('categoria_id')->references('id')->on('categorias');
         });
