@@ -71,3 +71,5 @@ Route::put('users/{user}/restore', [UsersController::class, 'restore'])
 //treinos
 
 Route::get('/treinos', [TreinoController::class, 'index'])->name('treinos');
+Route::post('/treinos', [TreinoController::class, 'inserir_treino'])->name('treinos');
+Route::get('/treinos/cadastro', [TreinoController::class, 'cadastro'])->name('treinos-cadastro');

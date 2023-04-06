@@ -41,7 +41,7 @@ let favoriteWorkouts = [];
   const workouts = document.querySelectorAll(".workout");
 
   workouts.forEach(workout => {
-    if (category === "" || workout.dataset.category === category || favoriteWorkouts.includes(workout)) {
+    if (category === "" || workout.dataset.categoryId === category || favoriteWorkouts.includes(workout)) {
       workout.style.display = "block";
     } else {
       workout.style.display = "none";

@@ -5,11 +5,20 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Treino;
+use App\Models\Categoria;
 
 class TreinoController extends Controller
 {
     public function index(){
-        return view('treinos');
+        $treinos = Treino::all();
+        $categorias = Categoria::all();
+        return view('treinos2',['treinos' => $treinos,'categorias' => $categorias]); //treinos2
+    }
+
+    public function cadastro(){
+        $treinos = Treino::all();
+        $categorias = Categoria::all();
+        return view('treinos_cadastro',['treinos' => $treinos,'categorias' => $categorias,'classe' => 'x']);
     }
 
     public function inserir_treino(Request $request){
@@ -28,8 +37,17 @@ class TreinoController extends Controller
             'required' => 'O campo :attribute deve ser preenchido'
         ];
 
+        //unset($request["_token"]);
+
         $request->validate($regras, $feedback);
-        Treino::create($request->all());
-        return redirect()->route('/');
+        $treino = new Treino();
+        $treino->nome = $request->input('nome');
+        $treino->categoria_id = $request->input('categoria_id');
+        $treino->descricao = $request->input('descricao');
+        $treino->info_extra = $request->input('info_extra');
+        $treino->caminho_imagem = $request->input('caminho_imagem');
+        $treino->save();
+        //Treino::create($request->all());
+        return redirect()->route('treinos');
     }
 }
