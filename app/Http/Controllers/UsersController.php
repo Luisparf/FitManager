@@ -63,7 +63,7 @@ class UsersController extends Controller
             'photo_path' => Request::file('photo') ? Request::file('photo')->store('users') : null,
         ]);
 
-        return Redirect::route('users')->with('success', 'User created.');
+        return Redirect::route('users')->with('success', 'Usuário criado.');
     }
 
     public function edit(User $user)

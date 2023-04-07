@@ -58,9 +58,10 @@
         <tr v-if="users.length === 0">
           <td class="px-6 py-4 border-t" colspan="4">Nenhum usuário encontrado.</td>
         </tr>
+        <pagination class="mt-6" :links="users.links" />
+
       </table>
     </div>
-    <!-- <pagination class="mt-6" :links="users.links" /> -->
 
   </div>
 </template>
@@ -86,7 +87,7 @@ export default {
   layout: Layout,
   props: {
     filters: Object,
-    users: Array,
+    users: Object,
   },
   data() {
     return {

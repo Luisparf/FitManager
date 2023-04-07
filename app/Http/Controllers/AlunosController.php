@@ -55,7 +55,7 @@ class AlunosController extends Controller
             'photo_path' => Request::file('photo') ? Request::file('photo')->store('alunos') : null,
         ]);
 
-        return Redirect::route('alunos')->with('success', 'Aluno created.');
+        return Redirect::route('alunos')->with('success', 'Aluno criado.');
     }
 
     public function edit(Aluno $aluno)
