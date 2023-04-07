@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TreinoController;
+use App\Http\Controllers\AgendaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,3 +74,6 @@ Route::put('users/{user}/restore', [UsersController::class, 'restore'])
 Route::get('/treinos', [TreinoController::class, 'index'])->name('treinos');
 Route::post('/treinos', [TreinoController::class, 'inserir_treino'])->name('treinos');
 Route::get('/treinos/cadastro', [TreinoController::class, 'cadastro'])->name('treinos-cadastro');
+
+Route::get('/agenda', [AgendaController::class, 'index'])->name('agenda');
+Route::post('/agenda', [AgendaController::class, 'agendar'])->name('agenda');

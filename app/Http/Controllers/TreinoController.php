@@ -33,7 +33,7 @@ class TreinoController extends Controller
         $feedback = [
             'min' => 'O campo :attribute precisa ter no mínimo 3 caracteres',
             'max' => 'O campo :attribute deve ter no máximo 40 caracteres',
-            'descricao.max' => 'A mensagem deve ter no máximo 100 caracteres',
+            'descricao.max' => 'A mensagem deve ter no máximo 200 caracteres',
             'required' => 'O campo :attribute deve ser preenchido'
         ];
 
