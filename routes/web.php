@@ -72,8 +72,9 @@ Route::put('users/{user}/restore', [UsersController::class, 'restore'])
 //treinos
 
 Route::get('/treinos', [TreinoController::class, 'index'])->name('treinos');
-Route::post('/treinos', [TreinoController::class, 'inserir_treino'])->name('treinos');
-Route::get('/treinos/cadastro', [TreinoController::class, 'cadastro'])->name('treinos-cadastro');
+Route::post('/treinos', [TreinoController::class, 'inserir_treino'])->name('treinos')->middleware('auth');
+Route::get('/treinos/cadastro', [TreinoController::class, 'cadastro'])->name('treinos-cadastro')->middleware('auth');
+Route::delete('/treinos/{id}', [TreinoController::class, 'deletar_treino'])->name('treinos-delete')->middleware('auth');
 
-Route::get('/agenda', [AgendaController::class, 'index'])->name('agenda');
-Route::post('/agenda', [AgendaController::class, 'agendar'])->name('agenda');
+Route::get('/agenda', [AgendaController::class, 'index'])->name('agenda')->middleware('auth');
+Route::post('/agenda', [AgendaController::class, 'agendar'])->name('agenda')->middleware('auth');

@@ -87,6 +87,11 @@
     border-radius: 5px;
     padding: 5px;
    }
+   .delete-button{
+    background-color: rgb(209, 155, 133);
+    border-radius: 5px;
+    padding: 5px;
+   }
    .extra-info{
       border: 1px solid #000000;
       border-radius: 5px;

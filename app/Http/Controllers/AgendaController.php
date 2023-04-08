@@ -19,6 +19,18 @@ class AgendaController extends Controller
         //$agendas n é necessário aqui (pois é cadastro e o agendar abaixo já cuida de salvar os dados do usuário), usar quando for retornar a view?s
         $agendas = Agenda::where('user_id', Auth::user()->id);
         return view('agenda', ['treinos' => $treinos, 'classe' => 'x', 'dias' => $dias, 'agendas' => $agendas]);
+        //mudar a view agenda pra cadastro agenda e mudar de index, deixar o index só com a view agenda mesmo
+        //deixar o cadastro de agenda dentro da view agenda
+    }
+
+    public function cadastro(){ //cadastro agenda
+        $treinos = Treino::all();
+        $dias = Dia::all();
+        //$agendas n é necessário aqui (pois é cadastro e o agendar abaixo já cuida de salvar os dados do usuário), usar quando for retornar a view?s
+        $agendas = Agenda::where('user_id', Auth::user()->id);
+        return view('agenda-cadastro', ['treinos' => $treinos, 'classe' => 'x', 'dias' => $dias, 'agendas' => $agendas]);
+        //mudar a view agenda pra cadastro agenda e mudar de index, deixar o index só com a view agenda mesmo
+        //deixar o cadastro de agenda dentro da view agenda
     }
 
     public function agendar(Request $request){

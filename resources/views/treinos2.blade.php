@@ -9,6 +9,11 @@
 </head>
 
 <body>
+  @if (session('success'))
+  <script>
+      alert('{{ session('success') }}');
+  </script>
+  @endif
   <h1><b>Treinos disponíveis</b></h1>
   
   <div id="filter-section">
@@ -33,10 +38,18 @@
         <p>{{ $treino->descricao }}</p>
         <button class="show-more-button">Ver mais</button>
       {{--@if(Auth::check())-- Auth::user()->id == 2 funciona --}}
-          <div class="extra-info">
-            <p>{{ $treino->info_extra }}</p>
-          </div>
-          <button class="favorite-button">Adicionar aos favoritos</button>
+        <div class="extra-info">
+          <p>{{ $treino->info_extra }}</p>
+        </div>
+        <button class="favorite-button">Adicionar aos favoritos</button>
+        @if(Auth::user()->id == $treino->user_id)
+          <form action = "{{ route ('treinos-delete', $treino->id)}}" method = "POST">
+            @csrf
+            @method('DELETE')
+            <br>
+            <button type="submit" class="delete-button" onclick="return confirm('Tem certeza de que deseja deletar este treino?')">Deletar</button>
+          </form>
+        @endif
         {{--@endif--}}
       </div>
     @endforeach    

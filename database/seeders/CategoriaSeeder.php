@@ -14,27 +14,28 @@ class CategoriaSeeder extends Seeder
      */
     public function run()
     {
-       Categoria::create([
+        Categoria::create([
             'categoria' => 'Favoritos'
-       ]);
-       Categoria::create([
-        'categoria' => 'Peito'
         ]);
         Categoria::create([
+            'categoria' => 'Peito']);
+        Categoria::create([
             'categoria' => 'Costas'
-       ]);
-       Categoria::create([
-        'categoria' => 'Pernas'
+        ]);
+        Categoria::create([
+            'categoria' => 'Pernas'
         ]);
         Categoria::create([
             'categoria' => 'Ombros'
-       ]);
-       Categoria::create([
-        'categoria' => 'Biceps'
+        ]);
+        Categoria::create([
+            'categoria' => 'Biceps'
         ]);
         Categoria::create([
             'categoria' => 'Triceps'
-       ]);
-   
+        ]);
+        Categoria::create([
+            'categoria' => 'Abdominais'
+        ]);   
     }
 }

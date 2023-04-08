@@ -17,11 +17,13 @@ class CreateTreinosTable extends Migration
         Schema::create('treinos', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 50);
+            $table->unsignedInteger('user_id');
             $table->unsignedBigInteger('categoria_id'); //mudar pra igual motivos_contatos_ip do sg
             $table->text('descricao');
             $table->text('info_extra')->nullable();
             $table->string('caminho_imagem',200);
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('categoria_id')->references('id')->on('categorias');
         });
     }
