@@ -11,4 +11,8 @@ class Dia extends Model
     protected $fillable = [
         'dia',
     ];
+
+    public function agendas(){
+        return $this->hasMany(Agenda::class, 'dia_id');
+    }
 }

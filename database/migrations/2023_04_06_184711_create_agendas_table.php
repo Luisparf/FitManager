@@ -15,11 +15,13 @@ class CreateAgendasTable extends Migration
     {
         Schema::create('agendas', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('user_id');
             $table->unsignedBigInteger('dia_id');
             $table->unsignedBigInteger('treino_id');
             $table->integer('series');
             $table->integer('repeticoes');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('dia_id')->references('id')->on('dias');
             $table->foreign('treino_id')->references('id')->on('treinos');
         });

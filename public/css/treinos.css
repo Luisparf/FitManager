@@ -8,9 +8,26 @@
       color: #333;
     }
   
+    #filter-section {
+      display: flex;
+      justify-content: center;
+      align-items:center;
+    }
+
     #filter-form {
       text-align: center;
-      margin-bottom: 20px;
+      align-self: center;
+      margin: 20px;
+    }
+    
+    #filter-section a {
+      margin: 20px;
+    }
+
+    #filter-category {
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #333;
     }
   
     #workouts {
@@ -48,11 +65,7 @@
     p{
       font-weight: bold;
     }
-    #filter-category {
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #333;
-    }
+
     .extra-info {
       display: none;
     }

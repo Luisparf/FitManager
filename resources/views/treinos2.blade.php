@@ -11,15 +11,19 @@
 <body>
   <h1><b>Treinos disponíveis</b></h1>
   
-  <form id="filter-form">
-    <label for="filter-category">Filtrar por categoria:</label>
-    <select id="filter-category">
-      <option value="">Todas</option>
-      @foreach($categorias as $categoria)
-            <option value="{{ $categoria->id }}">{{ $categoria->categoria }}</option>
-      @endforeach  
-    </select>
-  </form>
+  <div id="filter-section">
+    <a href="{{ route('agenda')}}">Agenda</a>
+    <form id="filter-form">
+      <label for="filter-category">Filtrar por categoria:</label>
+      <select id="filter-category">
+        <option value="">Todas</option>
+        @foreach($categorias as $categoria)
+          <option value="{{ $categoria->id }}">{{ $categoria->categoria }}</option>
+        @endforeach  
+      </select>
+    </form>
+    <a href="{{ route('treinos-cadastro')}}">Cadastro de Treinos</a>
+  </div>
 
   <div id="workouts">   
     @foreach($treinos as $treino)
@@ -28,7 +32,7 @@
         <img src="{{ asset($treino->caminho_imagem) }}" alt="{{ $treino->nome }}"> {{--public/storage/images/treinos...--}}
         <p>{{ $treino->descricao }}</p>
         <button class="show-more-button">Ver mais</button>
-      {{--@if(Auth::check())--}}
+      {{--@if(Auth::check())-- Auth::user()->id == 2 funciona --}}
           <div class="extra-info">
             <p>{{ $treino->info_extra }}</p>
           </div>

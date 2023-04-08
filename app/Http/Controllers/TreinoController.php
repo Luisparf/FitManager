@@ -18,14 +18,14 @@ class TreinoController extends Controller
     public function cadastro(){
         $treinos = Treino::all();
         $categorias = Categoria::all();
-        return view('treinos_cadastro',['treinos' => $treinos,'categorias' => $categorias,'classe' => 'x']);
+        return view('treinos_cadastro',['treinos' => $treinos,'categorias' => $categorias]);
     }
 
     public function inserir_treino(Request $request){
         $regras = [
             'nome' => 'required|min:3|max:40',
             'categoria_id' => 'required',
-            'descricao' => 'min:3|max:200',
+            'descricao' => 'required|min:3|max:200',
             'info_extra' => 'max:500',
             'caminho_imagem' => 'required|image|mimes:jpeg,jpg,png'
         ];
@@ -33,11 +33,9 @@ class TreinoController extends Controller
         $feedback = [
             'min' => 'O campo :attribute precisa ter no mínimo 3 caracteres',
             'max' => 'O campo :attribute deve ter no máximo 40 caracteres',
-            'descricao.max' => 'A mensagem deve ter no máximo 200 caracteres',
+            'descricao.max' => 'A descrição deve ter no máximo 200 caracteres',
             'required' => 'O campo :attribute deve ser preenchido'
         ];
-
-        //unset($request["_token"]);
 
         $request->validate($regras, $feedback);
         $treino = new Treino();
@@ -55,6 +53,6 @@ class TreinoController extends Controller
        
         $treino->save();
         //Treino::create($request->all());
-        //return redirect()->route('treinos');
+        return redirect()->route('treinos');
     }
 }
