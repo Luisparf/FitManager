@@ -78,3 +78,6 @@ Route::delete('/treinos/{id}', [TreinoController::class, 'deletar_treino'])->nam
 
 Route::get('/agenda', [AgendaController::class, 'index'])->name('agenda')->middleware('auth');
 Route::post('/agenda', [AgendaController::class, 'agendar'])->name('agenda')->middleware('auth');
+
+Route::get('/agenda/cadastro', [AgendaController::class, 'cadastro'])->name('agenda-cadastro')->middleware('auth');
+Route::delete('/agenda/{id}', [AgendaController::class, 'deletar_agenda'])->name('agenda-delete')->middleware('auth');

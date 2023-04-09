@@ -14,7 +14,7 @@ class TreinoController extends Controller
     public function index(){
         $treinos = Treino::all();
         $categorias = Categoria::all();
-        return view('treinos2',['treinos' => $treinos,'categorias' => $categorias]); //treinos2
+        return view('treinos',['treinos' => $treinos,'categorias' => $categorias]);
     }
 
     public function cadastro(){
