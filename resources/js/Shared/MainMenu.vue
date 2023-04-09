@@ -217,6 +217,23 @@ export default {
           icon: 'fa-solid fa-dumbbell'
         },
 
+
+        {
+          href: '/alunos',
+          title: 'Alunos',
+          icon: 'fa-solid fa-person-swimming'
+        },
+
+        {
+          href: '/funcionarios',
+          title: 'Funcionarios',
+          icon: 'fa-solid fa-tasks'
+        },
+
+
+
+
+
       ]
     }
   },

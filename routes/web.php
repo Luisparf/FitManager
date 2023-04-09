@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TreinoController;
 use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\AlunosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,3 +82,33 @@ Route::post('/agenda', [AgendaController::class, 'agendar'])->name('agenda')->mi
 
 Route::get('/agenda/cadastro', [AgendaController::class, 'cadastro'])->name('agenda-cadastro')->middleware('auth');
 Route::delete('/agenda/{id}', [AgendaController::class, 'deletar_agenda'])->name('agenda-delete')->middleware('auth');
+
+// Alunos
+
+Route::get('alunos', [AlunosController::class, 'index'])
+    ->name('alunos')
+    ->middleware('auth');
+
+Route::get('alunos/create', [AlunosController::class, 'create'])
+    ->name('alunos.create')
+    ->middleware('auth');
+
+Route::post('alunos', [AlunosController::class, 'store'])
+    ->name('alunos.store')
+    ->middleware('auth');
+
+Route::get('alunos/{aluno}/edit', [AlunosController::class, 'edit'])
+    ->name('alunos.edit')
+    ->middleware('auth');
+
+Route::put('alunos/{aluno}', [AlunosController::class, 'update'])
+    ->name('alunos.update')
+    ->middleware('auth');
+
+Route::delete('alunos/{aluno}', [AlunosController::class, 'destroy'])
+    ->name('alunos.destroy')
+    ->middleware('auth');
+
+Route::put('alunos/{aluno}/restore', [AlunosController::class, 'restore'])
+    ->name('alunos.restore')
+    ->middleware('auth');

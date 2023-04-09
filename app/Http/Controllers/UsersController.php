@@ -18,15 +18,17 @@ class UsersController extends Controller
         // $s = 'string';
         // dd($s);
         return Inertia::render('Users/Index', [
-            'filters' => Request::all('search', 'role', 'trashed'),
+            'filters' => Request::all('search', 'type', 'trashed'),
             'users' => Auth::user()->account->users()
                 ->orderByName()
-                ->filter(Request::only('search', 'role', 'trashed'))
-                ->get()
+                ->filter(Request::only('search', 'type', 'trashed'))
+                ->paginate(10)
+                ->withQueryString()
                 ->transform(fn ($user) => [
                     'id' => $user->id,
                     'name' => $user->name,
                     'email' => $user->email,
+                    'type' => $user->type,
                     'owner' => $user->owner,
                     'photo' => $user->photo_path ? URL::route('image', ['path' => $user->photo_path, 'w' => 40, 'h' => 40, 'fit' => 'crop']) : null,
                     'deleted_at' => $user->deleted_at,
@@ -43,6 +45,8 @@ class UsersController extends Controller
     {
         Request::validate([
             'name' => ['required', 'max:50'],
+            'type' => ['required', 'max:50'],
+            'cpf' => ['required', 'max:50'],
             'email' => ['required', 'max:50', 'email', Rule::unique('users')],
             'password' => ['nullable'],
             'owner' => ['required', 'boolean'],
@@ -52,12 +56,14 @@ class UsersController extends Controller
         Auth::user()->account->users()->create([
             'name' => Request::get('name'),
             'email' => Request::get('email'),
+            'cpf' => Request::get('cpf'),
+            'type' => Request::get('type'),
             'password' => Request::get('password'),
             'owner' => Request::get('owner'),
             'photo_path' => Request::file('photo') ? Request::file('photo')->store('users') : null,
         ]);
 
-        return Redirect::route('users')->with('success', 'User created.');
+        return Redirect::route('users')->with('success', 'Usuário criado.');
     }
 
     public function edit(User $user)
@@ -67,6 +73,7 @@ class UsersController extends Controller
                 'id' => $user->id,
                 'name' => $user->name,
                 'email' => $user->email,
+                'type' => $user->email,
                 'owner' => $user->owner,
                 'photo' => $user->photo_path ? URL::route('image', ['path' => $user->photo_path, 'w' => 60, 'h' => 60, 'fit' => 'crop']) : null,
                 'deleted_at' => $user->deleted_at,
@@ -82,13 +89,14 @@ class UsersController extends Controller
 
         Request::validate([
             'name' => ['required', 'max:50'],
+            'type' => ['required', 'max:50'],
             'email' => ['required', 'max:50', 'email', Rule::unique('users')->ignore($user->id)],
             'password' => ['nullable'],
             'owner' => ['required', 'boolean'],
             'photo' => ['nullable', 'image'],
         ]);
 
-        $user->update(Request::only('name','email', 'owner'));
+        $user->update(Request::only('name','email', 'type'));
 
         if (Request::file('photo')) {
             $user->update(['photo_path' => Request::file('photo')->store('users')]);
