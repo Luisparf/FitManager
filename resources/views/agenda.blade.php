@@ -9,29 +9,30 @@
     <h1>Minha Agenda</h1>
     <div class="links-container">
       <a class="link" href="{{ route('treinos')}}">Voltar</a>
-      <a class="link" href="{{ route('agenda-cadastro')}}">Adicionar treino</a>
+      <a class="link" href="{{ route('agenda-cadastro')}}">Adicionar treino à sua agenda</a>
     </div>
     @foreach($dias as $dia)
-      <h2 class="arrow">{{ $dia->dia }}</h2>
-      <div class="day-workouts">
+      <h2 class="seta">{{ $dia->dia }}</h2>
+      <div class="treinos-dia">
         @foreach($agendas as $agenda)
           @if($agenda->dia_id == $dia->id)
-            <div class="workout">
+            <div class="treino">
               <h3>{{ $agenda->treino->nome }}</h3>
-              <div class="series-repetitions">
+              <div class="series-repeticoes">
                 <p>{{ $agenda->series}} SÉRIES de {{ $agenda->repeticoes}} REPETIÇÕES</p>
               </div>
-              <button class="show-more-button">Ver mais detalhes</button>
-              <div class="extra-info">
+              <button class="mostrar-mais">Ver mais detalhes</button>
+              <br><br>
+              <div class="info-extra">
                 <img src="{{ asset($agenda->treino->caminho_imagem) }}" alt="{{ $agenda->treino->nome }}">
                 <p>{{ $agenda->treino->descricao }}</p>
+                <form action="{{ route('agenda-delete', ['id' => $agenda->id]) }}" method="POST">
+                  @csrf
+                  @method('DELETE')
+                  <br>
+                  <button type="submit" class="botao-delete" onclick=" return confirm('Tem certeza de que deseja remover este treino de sua agenda?')">Remover da agenda</button>
+                </form>
               </div>
-              <form action="{{ route('agenda-delete', ['id' => $agenda->id]) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <br>
-                <button type="submit" class="delete-button" onclick=" return confirm('Tem certeza de que deseja remover este treino de sua agenda?')">Remover</button>
-              </form>
             </div>
           @endif
         @endforeach

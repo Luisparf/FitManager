@@ -16,11 +16,11 @@
   @endif
   <h1><b>Treinos disponíveis</b></h1>
   
-  <div id="filter-section">
+  <div id="filtros">
     <a class = "link" href="{{ route('agenda')}}">Agenda</a>
-    <form id="filter-form">
-      <label for="filter-category">Filtrar por categoria:</label>
-      <select id="filter-category">
+    <form id="form-filtro">
+      <label for="filtro-categoria">Filtrar por categoria:</label>
+      <select id="filtro-categoria">
         <option value="">Todas</option>
         @foreach($categorias as $categoria)
           <option value="{{ $categoria->id }}">{{ $categoria->categoria }}</option>
@@ -30,23 +30,27 @@
     <a class = "link" href="{{ route('treinos-cadastro')}}">Novos Treinos</a>
   </div>
 
-  <div id="workouts">   
+  <div id="treinos">   
     @foreach($treinos as $treino)
-      <div class="workout" data-category-id="{{ $treino->categoria->id }}"> {{--mudar category pra categoria dps--}}
+      <div class="treino" data-category-id="{{ $treino->categoria->id }}"> {{--mudar category pra categoria dps--}}
         <h2>{{ $treino->nome }}</h2>
         <img src="{{ asset($treino->caminho_imagem) }}" alt="{{ $treino->nome }}"> {{--public/storage/images/treinos...--}}
         <p>{{ $treino->descricao }}</p>
-        <button class="show-more-button">Ver mais</button>
-        <div class="extra-info">
+        <button class="mostrar-mais">Mais detalhes</button>
+        <div class="info-extra">
           <p>{{ $treino->info_extra }}</p>
         </div>
-        <button class="favorite-button">Adicionar aos favoritos</button>
+        <form action="{{ route('favoritos', $treino->id) }}" method="POST">
+          @csrf
+          <br>
+          <button type="submit" class="botao-favoritos">Adicionar aos favoritos</button>
+        </form>
         @if(Auth::user()->id == $treino->user_id)
           <form action = "{{ route ('treinos-delete', $treino->id)}}" method = "POST">
             @csrf
             @method('DELETE')
             <br>
-            <button type="submit" class="delete-button" onclick="return confirm('Tem certeza de que deseja excluir este treino?')">Excluir</button>
+            <button type="submit" class="botao-delete" onclick="return confirm('Tem certeza de que deseja excluir este treino?')">Excluir</button>
           </form>
         @endif
       </div>

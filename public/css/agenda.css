@@ -16,24 +16,26 @@ body {
 
   }
 
-  .day-workouts {
+  .treinos-dia {
     display: none;
   }
   
-  .day-workouts.show {
+  .treinos-dia.show {
     display: block;
   }
 
   .series-repeticoes {
     display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  #filter-section {
+  #filtros {
     display: flex;
     justify-content: center;
     align-items:center;
   }
-  .workout {
+  .treino {
     width: 30%;
     margin: 10px;
     text-align: center;
@@ -59,15 +61,15 @@ body {
     font-weight: bold;
   }
 
-  .extra-info {
+  .info-extra {
     display: none;
   }
-  .extra-info.show {
+  .info-extra.show {
     display: block;
     color: black;
     background-color: rgb(204, 185, 149);
  }
- .favorite-button{
+ .botao-favoritos{
   background-color: rgb(209, 155, 133);
   border-radius: 5px;
   color:rgb(0, 0, 0);
@@ -75,17 +77,19 @@ body {
   padding: 5px;
   /*font-weight: bold;*/
  }
- .show-more-button{
+ .mostrar-mais{
   background-color: rgb(209, 155, 133);
   border-radius: 5px;
   padding: 5px;
  }
- .delete-button{
+ .botao-delete{
+  display: block;
+  margin: 0 auto;
   background-color: rgb(209, 155, 133);
   border-radius: 5px;
   padding: 5px;
  }
- .extra-info{
+ .info-extra{
     border: 1px solid #000000;
     border-radius: 5px;
     text-align: justify;
@@ -102,14 +106,14 @@ body {
     cursor: pointer;
   }
 
-  .arrow::before {
+  .seta::before {
     content: '▶';
     display: inline-block;
     margin-right: 5px;
     transition: transform 0.3s ease-in-out;
   }
 
-  .arrow.open::before {
+  .seta.open::before {
     transform: rotate(90deg);
   }
 

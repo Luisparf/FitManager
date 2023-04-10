@@ -1,51 +1,51 @@
-const filterCategory = document.querySelector('#filter-category');
-const workouts = document.querySelectorAll('.workout');
+const filterCategory = document.querySelector('#filtro-categoria');
+const treinos = document.querySelectorAll('.treino');
 
 filterCategory.addEventListener('change', function(event) {
   const selectedCategory = event.target.value;
 
-  workouts.forEach(function(workout) {
-    if (selectedCategory === '' || workout.dataset.category === selectedCategory) {
-      workout.style.display = 'block';
+  treinos.forEach(function(treino) {
+    if (selectedCategory === '' || treino.dataset.category === selectedCategory) {
+      treino.style.display = 'block';
     } else {
-      workout.style.display = 'none';
+      treino.style.display = 'none';
     }
   });
 });
 
-  const showMoreButtons = document.querySelectorAll('.show-more-button');
+  const showMoreButtons = document.querySelectorAll('.mostrar-mais');
   for (let i = 0; i < showMoreButtons.length; i++) {
     showMoreButtons[i].addEventListener('click', function() {
-      const extraInfo = this.parentNode.querySelector('.extra-info');
+      const extraInfo = this.parentNode.querySelector('.info-extra');
       extraInfo.classList.toggle('show');
     });
 }
 
-let favoriteWorkouts = [];
+let favoritetreinos = [];
   
   // Adiciona um manipulador de eventos clique ao botão "Adicionar aos favoritos"
-  const buttons = document.querySelectorAll(".favorite-button");
+  const buttons = document.querySelectorAll(".botao-favoritos");
   buttons.forEach(button => {
     button.addEventListener("click", event => {
-      const workout = event.target.parentElement;
-      if(favoriteWorkouts.includes(workout)){
-        favoriteWorkouts.pop(workout);
+      const treino = event.target.parentElement;
+      if(favoritetreinos.includes(treino)){
+        favoritetreinos.pop(treino);
       }else{
-        favoriteWorkouts.push(workout);
+        favoritetreinos.push(treino);
       }      
     });
   });
 
-  function filterWorkouts() {
-  const category = document.getElementById("filter-category").value;
-  const workouts = document.querySelectorAll(".workout");
+  function filtertreinos() {
+  const category = document.getElementById("filtro-categoria").value;
+  const treinos = document.querySelectorAll(".treino");
 
-  workouts.forEach(workout => {
-    if (category === "" || workout.dataset.categoryId === category || favoriteWorkouts.includes(workout)) {
-      workout.style.display = "block";
+  treinos.forEach(treino => {
+    if (category === "" || treino.dataset.categoryId === category || favoritetreinos.includes(treino)) {
+      treino.style.display = "block";
     } else {
-      workout.style.display = "none";
+      treino.style.display = "none";
     }
   });
 }
-document.getElementById("filter-category").addEventListener("change", filterWorkouts);
+document.getElementById("filtro-categoria").addEventListener("change", filtertreinos);

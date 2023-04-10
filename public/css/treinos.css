@@ -8,29 +8,29 @@
       color: #000000;
     }
   
-    #filter-section {
+    #filtros {
       display: flex;
       justify-content: center;
       align-items:center;
     }
 
-    #filter-form {
+    #form-filtro {
       text-align: center;
       align-self: center;
       margin: 20px;
     }
     
-    #filter-section a {
+    #filtros a {
       margin: 20px;
     }
 
-    #filter-category {
+    #filtro-categoria {
       padding: 5px;
       border-radius: 5px;
       border: 1px solid #333;
     }
   
-    #workouts {
+    #treinos {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -41,7 +41,7 @@
       border-color: rgb(124, 5, 5);
     }
   
-    .workout {
+    .treino {
       width: 30%;
       margin: 20px;
       text-align: center;
@@ -66,15 +66,15 @@
       font-weight: bold;
     }
 
-    .extra-info {
+    .info-extra {
       display: none;
     }
-    .extra-info.show {
+    .info-extra.show {
       display: block;
       color: black;
       background-color: rgb(204, 185, 149);
    }
-   .favorite-button{
+   .botao-favoritos{
     background-color: rgb(209, 155, 133);
     border-radius: 5px;
     color:rgb(0, 0, 0);
@@ -82,17 +82,17 @@
     padding: 5px;
     /*font-weight: bold;*/
    }
-   .show-more-button{
+   .mostrar-mais{
     background-color: rgb(209, 155, 133);
     border-radius: 5px;
     padding: 5px;
    }
-   .delete-button{
+   .botao-delete{
     background-color: rgb(209, 155, 133);
     border-radius: 5px;
     padding: 5px;
    }
-   .extra-info{
+   .info-extra{
       border: 1px solid #000000;
       border-radius: 5px;
       text-align: justify;

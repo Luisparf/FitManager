@@ -8,6 +8,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TreinoController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\AlunosController;
+use App\Http\Controllers\FavoritoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,6 +83,10 @@ Route::post('/agenda', [AgendaController::class, 'agendar'])->name('agenda')->mi
 
 Route::get('/agenda/cadastro', [AgendaController::class, 'cadastro'])->name('agenda-cadastro')->middleware('auth');
 Route::delete('/agenda/{id}', [AgendaController::class, 'deletar_agenda'])->name('agenda-delete')->middleware('auth');
+
+//favoritos
+
+Route::post('/favoritos{id}', [FavoritoController::class, 'favoritar'])->name('favoritos')->middleware('auth');
 
 // Alunos
 
