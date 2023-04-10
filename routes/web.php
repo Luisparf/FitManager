@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\AlunosController;
+use App\Http\Controllers\AvaliacoesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,3 +99,33 @@ Route::delete('alunos/{aluno}', [AlunosController::class, 'destroy'])
 Route::put('alunos/{aluno}/restore', [AlunosController::class, 'restore'])
     ->name('alunos.restore')
     ->middleware('auth');
+
+// Avaliações
+
+Route::get('avaliacoes', [AvaliacoesController::class, 'index'])
+->name('avaliacoes')
+->middleware('auth');
+
+Route::get('avaliacoes/create', [AvaliacoesController::class, 'create'])
+->name('avaliacoes.create')
+->middleware('auth');
+
+Route::post('avaliacoes', [AvaliacoesController::class, 'store'])
+->name('avaliacoes.store')
+->middleware('auth');
+
+Route::get('avaliacoes/{aluno}/edit', [AvaliacoesController::class, 'edit'])
+->name('avaliacoes.edit')
+->middleware('auth');
+
+Route::put('avaliacoes/{aluno}', [AvaliacoesController::class, 'update'])
+->name('avaliacoes.update')
+->middleware('auth');
+
+Route::delete('avaliacoes/{aluno}', [AvaliacoesController::class, 'destroy'])
+->name('avaliacoes.destroy')
+->middleware('auth');
+
+Route::put('avaliacoes/{aluno}/restore', [AvaliacoesController::class, 'restore'])
+->name('avaliacoes.restore')
+->middleware('auth');

@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use App\Models\Account;
 use App\Models\Aluno;
+use App\Models\Avaliacao;
 
 class DatabaseSeeder extends Seeder
 {
@@ -57,5 +58,6 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\User::factory(10)->create(['type' => 'Funcionario']);
         \App\Models\User::factory(10)->create(['type' => 'Professor']);
+        \App\Models\Avaliacao::factory(10)->create();
     }
 }

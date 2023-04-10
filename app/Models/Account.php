@@ -14,4 +14,9 @@ class Account extends Model
         return $this->hasMany(User::class);
     }
 
+    public function avaliacoes()
+    {
+        return $this->hasMany(Avaliacao::class);
+    }
+
 }

@@ -210,6 +210,12 @@
             icon: 'fa-solid fa-dumbbell'
           },
 
+          {
+            href: '/avaliacoes',
+            title: 'Avaliações',
+            icon: 'fa-solid fa-list-check'
+          },
+
 
 
 
