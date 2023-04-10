@@ -12,7 +12,7 @@
                         autocomplete="off" type="date" v-model="startDate" />
           </div>
           <div class="flex items-center justify-end px-8 py-4 bg-red-50 border-t border-red-100">
-            <loading-button :loading="form.processing" class="btn-red" type="submit">Criar usuário</loading-button>
+            <loading-button :loading="form.processing" class="btn-red" type="submit">Solicitar avaliação</loading-button>
           </div>
         </form>
       </div>
