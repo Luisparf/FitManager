@@ -16,8 +16,11 @@ class CreateAvaliacoesTable extends Migration
         Schema::create('avaliacoes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('account_id')->index();
-            $table->string('descr');
-            $table->string('nota');
+            $table->integer('aluno_id')->index()->nullable();
+            $table->integer('professor_id')->index()->nullable();
+            $table->string('descr')->nullable();
+            $table->string('nota')->nullable();
+            $table->date('dateA')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

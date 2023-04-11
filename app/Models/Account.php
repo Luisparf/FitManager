@@ -19,4 +19,9 @@ class Account extends Model
         return $this->hasMany(Avaliacao::class);
     }
 
+    public function professores()
+    {
+        return $this->hasOne(Professor::class);
+    }
+
 }

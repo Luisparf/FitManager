@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 
 class Avaliacao extends Model
@@ -16,6 +17,33 @@ class Avaliacao extends Model
 
     protected $table = 'avaliacoes';
     protected $guarded = [];
+    protected $fillable = [
+        'descr',
+        'dateA',
+
+    ];
+
+    public function getAlunoName($id)
+    {
+        $s = DB::table('alunos')
+            ->where('id', '=', $id)
+            ->get('name')
+            ->pluck('name')
+            ->toArray();
+
+        return implode(" ", $s);
+    }
+    // public function getProfessorName($id)
+    // {
+    //     $s = DB::table('professores')
+    //         ->where('id', '=', $id)
+    //         ->get('nome_fan')
+    //         ->pluck('nome_fan')
+    //         ->toArray();
+
+    //     return implode(" ", $s);
+    // }
+
 
 
     public function resolveRouteBinding($value, $field = null)
@@ -26,12 +54,12 @@ class Avaliacao extends Model
 
     public function getNameAttribute()
     {
-        return $this->first_name.' '.$this->last_name;
+        return $this->descr;
     }
 
-    public function scopeOrderByName($query)
+    public function scopeOrderByDescr($query)
     {
-        $query->orderBy('name');
+        $query->orderBy('descr');
     }
 
     public function scopeFilter($query, array $filters)

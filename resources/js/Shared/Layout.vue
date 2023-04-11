@@ -62,7 +62,7 @@
         </div>
         <div class="md:flex  md:flex-grow md:overflow-hidden">
 
-          <main-menu-aluno v-if="auth.user.type == 'Aluno'"
+          <main-menu-aluno v-if="auth.user.type == 'Aluno' || auth.user.type == 'Professor'"
             class="hidden  flex-shrink-0 p-12 w-56 overflow-y-auto md:block" />
           <main-menu  v-if="auth.user.type == 'Funcionario'"
             class="hidden  flex-shrink-0 p-12 w-56 overflow-y-auto md:block" />

@@ -8,8 +8,11 @@
       <div class="max-w-3xl bg-white rounded-md shadow overflow-hidden">
         <form @submit.prevent="store">
           <div class="flex flex-wrap -mb-8 -mr-6 p-8">
-            <input id='start-date' class="relative px-3 py-3 w-full rounded focus:shadow-outline mr-1"
-                        autocomplete="off" type="date" v-model="startDate" />
+            <label for="start-date" class="relative px-3 py-3 w-full lg:w-1/2 rounded focus:shadow-outline">Data para avaliação</label>
+            <input id='start-date' class="relative px-3 py-3 w-full lg:w-1/2 rounded focus:shadow-outline mr-1"
+                        autocomplete="off" type="date" v-model="form.dateA" />
+              <text-input v-model="form.descr" :error="form.errors.descr"
+                        class="pb-6 pr-2 w-full lg:w-1/2" label="Descrição" />
           </div>
           <div class="flex items-center justify-end px-8 py-4 bg-red-50 border-t border-red-100">
             <loading-button :loading="form.processing" class="btn-red" type="submit">Solicitar avaliação</loading-button>
@@ -20,6 +23,7 @@
   </template>
 
   <script>
+
   import { Head, Link } from '@inertiajs/vue3'
   import Layout from '@/Shared/Layout'
   import FileInput from '@/Shared/FileInput'
@@ -39,24 +43,25 @@ import { mask } from 'vue-the-mask'
       TextInput,
       TheMask,
     },
+    props:{
+      auth: Object
+    },
     directives: { mask },
     layout: Layout,
     remember: 'form',
     data() {
       return {
         form: this.$inertia.form({
-          name: '',
-          email: '',
-          cpf: '',
-          password: '',
-          type: '',
-          owner: false,
-          photo: null,
+          dateA: null,
+          descr: '',
+          aluno_id: this.auth.user.aluno_id
+
         }),
       }
     },
     methods: {
       store() {
+        console.log(this.auth.user.aluno_id)
         this.form.post('/avaliacoes')
       },
     },

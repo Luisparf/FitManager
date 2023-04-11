@@ -15,7 +15,7 @@ class AvaliacaoFactory extends Factory
     {
         return [
             'nota' => $this->faker->randomElement(['abaixo da média','mediano','acima da média']),
-            'descr' => $this->faker->text(),
+            'descr' => $this->faker->sentence(),
             'account_id' => '1',
 
 

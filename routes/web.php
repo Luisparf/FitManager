@@ -114,18 +114,18 @@ Route::post('avaliacoes', [AvaliacoesController::class, 'store'])
 ->name('avaliacoes.store')
 ->middleware('auth');
 
-Route::get('avaliacoes/{aluno}/edit', [AvaliacoesController::class, 'edit'])
+Route::get('avaliacoes/{avaliacao}/edit', [AvaliacoesController::class, 'edit'])
 ->name('avaliacoes.edit')
 ->middleware('auth');
 
-Route::put('avaliacoes/{aluno}', [AvaliacoesController::class, 'update'])
+Route::put('avaliacoes/{avaliacao}', [AvaliacoesController::class, 'update'])
 ->name('avaliacoes.update')
 ->middleware('auth');
 
-Route::delete('avaliacoes/{aluno}', [AvaliacoesController::class, 'destroy'])
+Route::delete('avaliacoes/{avaliacao}', [AvaliacoesController::class, 'destroy'])
 ->name('avaliacoes.destroy')
 ->middleware('auth');
 
-Route::put('avaliacoes/{aluno}/restore', [AvaliacoesController::class, 'restore'])
+Route::put('avaliacoes/{avaliacao}/restore', [AvaliacoesController::class, 'restore'])
 ->name('avaliacoes.restore')
 ->middleware('auth');

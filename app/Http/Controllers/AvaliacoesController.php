@@ -22,7 +22,7 @@ class AvaliacoesController extends Controller
             'filters' => Request::all('search', 'type', 'trashed'),
             'avaliacoes' => Auth::user()->account->avaliacoes()
                 ->orderBy('id')
-                ->filter(Request::only('search', 'type', 'trashed'))
+                ->filter(Request::only('search',  'trashed'))
                 ->paginate(10)
                 ->withQueryString()
                 ->transform(fn ($avaliacao) => [
@@ -32,6 +32,9 @@ class AvaliacoesController extends Controller
                     'indicadores' => $avaliacao->indicadores,
                     'deleted_at' => $avaliacao->deleted_at,
                     'created_at' => $avaliacao->created_at,
+                    'dateA' => $avaliacao->dateA,
+                    // 'professor' => $avaliacao->dateA,
+                    'aluno' => $avaliacao->getAlunoName($avaliacao->aluno_id)
                 ]),
         ]);
     }
@@ -43,21 +46,18 @@ class AvaliacoesController extends Controller
 
     public function store()
     {
-        Request::validate([
-            'nome' => ['required', 'max:50'],
-            'email' => ['required', 'max:50', 'email', Rule::unique('avaliacoes')],
-            'password' => ['nullable'],
-            'photo' => ['nullable', 'image'],
-        ]);
+        Auth::user()->account->avaliacoes()->create(
+            Request::validate([
+                'dateA' => ['nullable', 'max:50'],
+                'descr' => ['nullable', 'max:100'],
+                'aluno_id' => ['nullable', 'max:100'],
 
-        Auth::user()->account->avaliacoes()->create([
-            'nome' => Request::get('nome'),
-            'email' => Request::get('email'),
-            'password' => Request::get('password'),
-            'photo_path' => Request::file('photo') ? Request::file('photo')->store('avaliacoes') : null,
-        ]);
 
-        return Redirect::route('avaliacoes')->with('success', 'Avaliacao created.');
+
+            ])
+        );
+
+        return Redirect::route('avaliacoes')->with('success', 'Avaliacao solicitada.');
     }
 
     public function edit(Avaliacao $avaliacao)
@@ -65,10 +65,9 @@ class AvaliacoesController extends Controller
         return Inertia::render('Avaliacoes/Edit', [
             'avaliacao' => [
                 'id' => $avaliacao->id,
-                'nome' => $avaliacao->nome,
-                'email' => $avaliacao->email,
-                'photo' => $avaliacao->photo_path ? URL::route('image', ['path' => $avaliacao->photo_path, 'w' => 60, 'h' => 60, 'fit' => 'crop']) : null,
-                'deleted_at' => $avaliacao->deleted_at,
+                'descr' => $avaliacao->descr,
+                'dateA' => $avaliacao->dateA,
+
             ],
         ]);
     }

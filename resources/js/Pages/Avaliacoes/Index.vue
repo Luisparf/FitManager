@@ -44,6 +44,7 @@
           <tr class="text-left font-bold">
             <th class="pb-4 pt-6 px-6">Descrição</th>
             <th class="pb-4 pt-6 px-6">Nota</th>
+            <th class="pb-4 pt-6 px-6">Aluno</th>
             <th class="pb-4 pt-6 px-6" colspan="2">Data</th>
           </tr>
           <tr v-for="avaliacao in avaliacoes" :key="avaliacao.id" class="hover:bg-red-100 focus-within:bg-red-100">
@@ -57,6 +58,11 @@
             <td class="border-t">
               <Link class="flex items-center px-6 py-4" :href="`/avaliacoes/${avaliacao.id}/edit`" tabindex="-1">
               {{ avaliacao.nota }}
+              </Link>
+            </td>
+            <td class="border-t">
+              <Link class="flex items-center px-6 py-4" :href="`/avaliacoes/${avaliacao.id}/edit`" tabindex="-1">
+              {{ avaliacao.aluno }}
               </Link>
             </td>
             <td class="border-t">
@@ -82,6 +88,8 @@
 
   <script>
   import { Head, Link } from '@inertiajs/vue3'
+  // import Layout from '@/Shared/Layout'
+
   import Icon from '@/Shared/Icon'
   import pickBy from 'lodash/pickBy'
   import Layout from '@/Shared/Layout'
@@ -111,6 +119,8 @@
     props: {
       filters: Object,
       avaliacoes: Object,
+      auth: Object
+
     },
     data() {
       return {
@@ -136,7 +146,7 @@
         this.form = mapValues(this.form, () => null)
       },
       formatDate(date) {
-            console.log(this.avaliacoes)
+            console.log(this.avaliacoes[0])
             return moment(date).format('DD/MM/YYYY');
         },
         resetInput() {
@@ -144,15 +154,16 @@
             this.endDate = '';
         }
     },
+
     computed: {
         filteredByDateRange() {
-            console.log(this.avaliacoes.data)
+            // console.log(this.avaliacoes)
 
-            const routeKeys = Object.keys(this.avaliacoes.data);
+            const routeKeys = Object.keys(this.avaliacoes[0].descr);
             console.log(routeKeys)
             // Filtra as rotas de acordo com o intervalo entre as datas
             const filteredByDateRange = routeKeys.filter(key => {
-                const avalDate = new Date(this.avaliacoes.data[key].created_at);
+                const avalDate = new Date(this.avaliacoes[0].created_at);
                 const startDate = this.startDate ? new Date(this.startDate) : null;
                 const endDate = this.endDate ? new Date(this.endDate) : null;
                 return (!startDate || avalDate >= startDate) && (!endDate || avalDate <= endDate.setDate(endDate.getDate() + 1));
