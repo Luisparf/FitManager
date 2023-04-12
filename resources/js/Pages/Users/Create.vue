@@ -8,7 +8,7 @@
       <div class="max-w-3xl bg-white rounded-md shadow overflow-hidden">
         <form @submit.prevent="store">
           <div class="flex flex-wrap -mb-8 -mr-6 p-8">
-            <text-input v-model="form.name" :error="form.errors.name" class="pb-8 pr-6 w-full lg:w-1/3" label="Nome" />
+            <text-input v-model="form.name" :error="form.errors.name" pattern="'/^[A-Za-zÀ-ú]{2,}(?:\s+[A-Za-zÀ-ú]{2,})+$/'" class="pb-8 pr-6 w-full lg:w-1/3" label="Nome" />
             <text-input v-model="form.email" :error="form.errors.email" class="pb-8 pr-6 w-full lg:w-1/3" label="Email" />
             <text-input v-model="form.cpf" :error="form.errors.cpf" class="pb-8 pr-6 w-full lg:w-1/3" v-mask="'###.###.###-##'" label="CPF" />
             <text-input v-model="form.password" :error="form.errors.password" class="pb-8 pr-6 w-full lg:w-1/2" type="password" autocomplete="new-password" label="Senha" />
