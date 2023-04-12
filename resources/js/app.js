@@ -1,42 +1,32 @@
-import { createApp, h } from 'vue'
-import { createInertiaApp } from '@inertiajs/vue3'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faPhone } from "@fortawesome/free-solid-svg-icons";
-// import { InertiaProgress } from '@inertiajs/progress'
-// import NProgress from 'nprogress'
-// router.on('start', () => NProgress.start())
-// router.on('finish', () => NProgress.done())
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes Vue and other libraries. It is a great starting point when
+ * building robust, powerful web applications using Vue and Laravel.
+ */
 
+require('./bootstrap');
 
-/* add some free styles */
-import { faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
-library.add(faTwitter, faUserSecret, faSearch, faPhone)
+window.Vue = require('vue').default;
 
-// InertiaProgress.init({
-//   // The delay after which the progress bar will
-//   // appear during navigation, in milliseconds.
-//   delay: 1000,
+/**
+ * The following block of code may be used to automatically register your
+ * Vue components. It will recursively scan this directory for the Vue
+ * components and automatically register them with their "basename".
+ *
+ * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ */
 
-//   // The color of the progress bar.
-//   color: '#f542f5',
+// const files = require.context('./', true, /\.vue$/i)
+// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-//   // Whether to include the default NProgress styles.
-//   includeCSS: true,
-//   // Whether the NProgress spinner will be shown.
-//   showSpinner: false,
-// })
+Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-createInertiaApp({
-  resolve: name => require(`./Pages/${name}`),
-  title: title => title ? `${title} - FitManager` : 'FitManager',
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
 
-  setup({ el, App, props, plugin }) {
-    createApp({ render: () => h(App, props) })
-      .use(plugin)
-      .component('font-awesome-icon', FontAwesomeIcon)
-      .mount(el)
-  },
-})
+const app = new Vue({
+    el: '#app',
+});
