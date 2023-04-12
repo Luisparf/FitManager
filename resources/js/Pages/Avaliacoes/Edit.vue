@@ -47,7 +47,7 @@ import { mask } from 'vue-the-mask'
 
     props:{
       auth: Object,
-      avaliacao: Object
+      aval: Object
     },
     directives: { mask },
     layout: Layout,
@@ -55,8 +55,8 @@ import { mask } from 'vue-the-mask'
     data() {
       return {
         form: this.$inertia.form({
-          dateA: this.avaliacao.dateA,
-          descr: this.avaliacao.descr,
+          dateA: this.aval.dateA,
+          descr: this.aval.descr,
           professor_: this.auth.user.professor_id
 
         }),

@@ -11819,6 +11819,9 @@ input:focus, select:focus, textarea:focus, button:focus, div:focus, a:focus, inp
 .pb-4 {
   padding-bottom: 1rem;
 }
+.pb-6 {
+  padding-bottom: 1.5rem;
+}
 .pb-8 {
   padding-bottom: 2rem;
 }
@@ -11828,17 +11831,14 @@ input:focus, select:focus, textarea:focus, button:focus, div:focus, a:focus, inp
 .pr-10 {
   padding-right: 2.5rem;
 }
+.pr-2 {
+  padding-right: 0.5rem;
+}
 .pr-6 {
   padding-right: 1.5rem;
 }
 .pt-6 {
   padding-top: 1.5rem;
-}
-.pb-6 {
-  padding-bottom: 1.5rem;
-}
-.pr-2 {
-  padding-right: 0.5rem;
 }
 .text-left {
   text-align: left;
@@ -12082,9 +12082,6 @@ input:focus, select:focus, textarea:focus, button:focus, div:focus, a:focus, inp
   }
   .lg\:w-1\/3 {
     width: 33.333333%;
-  }
-  .lg\:w-1\/4 {
-    width: 25%;
   }
 }
 

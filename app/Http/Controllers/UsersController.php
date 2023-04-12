@@ -15,8 +15,8 @@ class UsersController extends Controller
 {
     public function index()
     {
-        // $s = 'string';
-        // dd($s);
+        // dd('debugging');
+
         return Inertia::render('Users/Index', [
             'filters' => Request::all('search', 'type', 'trashed'),
             'users' => Auth::user()->account->users()

@@ -62,11 +62,12 @@ class AvaliacoesController extends Controller
 
     public function edit(Avaliacao $avaliacao)
     {
+        dd($avaliacao);
         return Inertia::render('Avaliacoes/Edit', [
-            'avaliacao' => [
+            'aval' => [
                 'id' => $avaliacao->id,
                 'descr' => $avaliacao->descr,
-                'dateA' => $avaliacao->dateA,
+                // 'dateA' => $avaliacao->dateA,
 
             ],
         ]);
