@@ -18,7 +18,7 @@ class CreateTreinosTable extends Migration
             $table->id();
             $table->string('nome', 50);
             $table->unsignedInteger('user_id');
-            $table->unsignedBigInteger('categoria_id'); //mudar pra igual motivos_contatos_ip do sg
+            $table->unsignedBigInteger('categoria_id');
             $table->text('descricao');
             $table->text('info_extra')->nullable();
             $table->string('caminho_imagem',200);

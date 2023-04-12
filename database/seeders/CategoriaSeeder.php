@@ -26,13 +26,16 @@ class CategoriaSeeder extends Seeder
             'categoria' => 'Ombros'
         ]);
         Categoria::create([
-            'categoria' => 'Biceps'
+            'categoria' => 'Bíceps'
         ]);
         Categoria::create([
             'categoria' => 'Triceps'
         ]);
         Categoria::create([
             'categoria' => 'Abdominais'
+        ]);
+        Categoria::create([
+            'categoria' => 'Antebraço'
         ]);   
     }
 }

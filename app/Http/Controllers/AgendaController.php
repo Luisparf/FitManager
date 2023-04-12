@@ -28,13 +28,14 @@ class AgendaController extends Controller
         $regras = [
             'dia' => 'required',
             'treino' => 'required',
-            'series' => 'required|max:100',
-            'repeticoes' => 'required|max:150'
+            'series' => 'required|max:100|integer',
+            'repeticoes' => 'required|max:150|integer'
         ];
         $feedback = [
-            'min' => 'O campo :attribute precisa ter no mínimo 3 caracteres',
-            'max' => 'O campo :attribute deve ter no máximo 40 caracteres',
-            'required' => 'O campo :attribute deve ser preenchido'
+            'series.max' => 'O campo :attribute deve ser no máximo 100',
+            'repeticoes.max' => 'O campo :attribute deve ser no máximo 150',
+            'required' => 'O campo :attribute deve ser preenchido',
+            'integer' => "O campo :attribute deve ser um número inteiro"
         ];
         $request->validate($regras, $feedback);
         $agenda = new Agenda();

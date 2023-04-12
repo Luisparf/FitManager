@@ -14,7 +14,7 @@
       alert('{{ session('success') }}');
   </script>
   @endif
-  <h1><b>Treinos disponíveis no FitManager</b></h1>
+  <h1><b>FitManager</b></h1>
   <div id="filtros">
     <a class = "link" href="{{ route('dashboard')}}">Voltar</a>    
     <a class = "link" href="{{ route('agenda')}}">Agenda</a>

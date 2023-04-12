@@ -8,11 +8,8 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TreinoController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\AlunosController;
-<<<<<<< Updated upstream
 use App\Http\Controllers\FavoritoController;
-=======
 use App\Http\Controllers\AvaliacoesController;
->>>>>>> Stashed changes
 
 /*
 |--------------------------------------------------------------------------
@@ -82,6 +79,8 @@ Route::post('/treinos', [TreinoController::class, 'inserir_treino'])->name('trei
 Route::get('/treinos/cadastro', [TreinoController::class, 'cadastro'])->name('treinos-cadastro')->middleware('auth');
 Route::delete('/treinos/{id}', [TreinoController::class, 'deletar_treino'])->name('treinos-delete')->middleware('auth');
 
+//agendas
+
 Route::get('/agenda', [AgendaController::class, 'index'])->name('agenda')->middleware('auth');
 Route::post('/agenda', [AgendaController::class, 'agendar'])->name('agenda')->middleware('auth');
 
@@ -121,8 +120,6 @@ Route::delete('alunos/{aluno}', [AlunosController::class, 'destroy'])
 Route::put('alunos/{aluno}/restore', [AlunosController::class, 'restore'])
     ->name('alunos.restore')
     ->middleware('auth');
-<<<<<<< Updated upstream
-=======
 
 // Avaliações
 
@@ -153,4 +150,3 @@ Route::delete('avaliacoes/{avaliacao}', [AvaliacoesController::class, 'destroy']
 Route::put('avaliacoes/{avaliacao}/restore', [AvaliacoesController::class, 'restore'])
 ->name('avaliacoes.restore')
 ->middleware('auth');
->>>>>>> Stashed changes
