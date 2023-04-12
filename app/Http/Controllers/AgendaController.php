@@ -21,7 +21,7 @@ class AgendaController extends Controller
     public function cadastro(){
         $treinos = Treino::all();
         $dias = Dia::all();
-        return view('agenda_cadastro', ['treinos' => $treinos, 'classe' => 'x', 'dias' => $dias]);
+        return view('agenda_cadastro', ['treinos' => $treinos, 'dias' => $dias]);
     }
 
     public function agendar(Request $request){

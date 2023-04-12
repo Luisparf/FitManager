@@ -21,7 +21,7 @@
     <form id="form-filtro">
       <label for="filtro-categoria">Filtrar por categoria:</label>
       <select id="filtro-categoria">
-        <option value="">Todas</option>
+        <option value="">Todos</option>
         @foreach($categorias as $categoria)
           <option value="{{ $categoria->id }}">{{ $categoria->categoria }}</option>
         @endforeach  
@@ -36,6 +36,10 @@
       <div class="treino" data-id="{{ $treino->id }}" data-category-id="{{ $treino->categoria->id }}">
         <h2>{{ $treino->nome }}</h2>
         <img src="{{ asset($treino->caminho_imagem) }}" alt="{{ $treino->nome }}">
+        <div class="descricao">
+          <h3 style = "text-align: justify">{{ $treino->descricao }}</h3>
+        </div>
+        <br>
         <div class="botoes">
           <button class="mostrar-mais">Mais detalhes</button>
           <div class="info-extra">
@@ -83,3 +87,12 @@
   }
 });
 </script>
+
+<script>
+  $('.treino').each(function() {
+    var favoritoIds = @json($favoritos->pluck('id'));
+    var treinoId = $(this).data('id');
+    if (favoritoIds.includes(treinoId)) {
+      $(this).find('.botao-favoritos').text('Remover dos favoritos');
+    }
+  });</script>

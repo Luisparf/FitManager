@@ -31,20 +31,24 @@ class TreinoController extends Controller
 
     public function inserir_treino(Request $request){
         $regras = [
-            'nome' => 'required|min:3|max:40',
+            'nome' => 'required|min:3|max:40|regex:/^(?!.*\s{2,})([A-Za-zÀ-ú0-9]+\s?){1,40}$/', //letra ou numero, 40 palavras, +2 espaços seguidos
             'categoria_id' => 'required',
-            'descricao' => 'required|min:3|max:200|not_regex:/Preencha aqui a descrição/i',
-            'info_extra' => 'nullable|max:500|not_regex:/Preencha aqui a informação extra/i',
+            'descricao' => 'required|min:3|max:200|not_regex:/Preencha aqui a descrição/i|regex:/^(?!.*\s{2,})([A-Za-zÀ-ú0-9]+\s?)+$/', //+2 espaços seguidos e pelo menos uma palavra
+            'info_extra' => 'nullable|max:500|not_regex:/Preencha aqui a informação extra/i|regex:/^(?!.*\s{2,})([A-Za-zÀ-ú0-9]+\s?)*$/', //+2 espaços seguidos e pelo menos uma palavra
             'caminho_imagem' => 'required|image|mimes:jpeg,jpg,png'
         ];
         $feedback = [
             'min' => 'O campo :attribute precisa ter no mínimo 3 caracteres',
             'max' => 'O campo :attribute deve ter no máximo 40 caracteres',
             'descricao.max' => 'A descrição deve ter no máximo 200 caracteres',
+            'info_extra.max' => 'O campo :attribute deve ter no máximo 500 caracteres',
             'required' => 'O campo :attribute deve ser preenchido',
             'image' => 'O arquivo deve ser uma imagem',
             'descricao.not_regex' => "Descrição inválida",
-            'info_extra.not_regex' => "Informação extra inválida"
+            'info_extra.not_regex' => "Informação extra inválida",
+            'nome.regex' => 'O campo :attribute deve ter no máximo 40 palavras e não pode ter mais de um espaço consecutivo.',
+            'descricao.regex' => 'O campo :attribute não pode ter mais de um espaço consecutivo.',
+            'info_extra.regex' => 'O campo :attribute não pode ter mais de um espaço consecutivo.'
         ];
 
         $request->validate($regras, $feedback);
