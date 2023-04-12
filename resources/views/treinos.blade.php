@@ -14,9 +14,9 @@
       alert('{{ session('success') }}');
   </script>
   @endif
-  <h1><b>Treinos disponíveis</b></h1>
-  
+  <h1><b>Treinos disponíveis no FitManager</b></h1>
   <div id="filtros">
+    <a class = "link" href="{{ route('dashboard')}}">Voltar</a>    
     <a class = "link" href="{{ route('agenda')}}">Agenda</a>
     <form id="form-filtro">
       <label for="filtro-categoria">Filtrar por categoria:</label>
@@ -27,24 +27,26 @@
         @endforeach  
       </select>
     </form>
+    <button id="mostrar-favoritos">Favoritos</button>
     <a class = "link" href="{{ route('treinos-cadastro')}}">Novos Treinos</a>
   </div>
 
   <div id="treinos">   
     @foreach($treinos as $treino)
-      <div class="treino" data-category-id="{{ $treino->categoria->id }}"> {{--mudar category pra categoria dps--}}
+      <div class="treino" data-id="{{ $treino->id }}" data-category-id="{{ $treino->categoria->id }}">
         <h2>{{ $treino->nome }}</h2>
-        <img src="{{ asset($treino->caminho_imagem) }}" alt="{{ $treino->nome }}"> {{--public/storage/images/treinos...--}}
-        <p>{{ $treino->descricao }}</p>
-        <button class="mostrar-mais">Mais detalhes</button>
-        <div class="info-extra">
-          <p>{{ $treino->info_extra }}</p>
+        <img src="{{ asset($treino->caminho_imagem) }}" alt="{{ $treino->nome }}">
+        <div class="botoes">
+          <button class="mostrar-mais">Mais detalhes</button>
+          <div class="info-extra">
+            <p>{{ $treino->info_extra }}</p>
+          </div>
+          <form action="{{ route('favoritos', $treino->id) }}" method="POST">
+            @csrf
+            <br>
+            <button type="submit" class="botao-favoritos">Adicionar aos favoritos</button>
+          </form>
         </div>
-        <form action="{{ route('favoritos', $treino->id) }}" method="POST">
-          @csrf
-          <br>
-          <button type="submit" class="botao-favoritos">Adicionar aos favoritos</button>
-        </form>
         @if(Auth::user()->id == $treino->user_id)
           <form action = "{{ route ('treinos-delete', $treino->id)}}" method = "POST">
             @csrf
@@ -62,3 +64,22 @@
 </html>
 
 <script src="js/treinos.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $('#mostrar-favoritos').on('click', function() {
+  var favoritoIds = @json($favoritos->pluck('id'));
+  
+  // Verificar se os treinos favoritos já estão sendo exibidos
+  var mostrandoFavoritos = $('.treino').filter(function() {
+    return !favoritoIds.includes($(this).data('id'));
+  }).is(':hidden');
+  
+  if (mostrandoFavoritos) {
+    $('.treino').show();
+  } else {
+    $('.treino').filter(function() {
+      return !favoritoIds.includes($(this).data('id'));
+    }).hide();
+  }
+});
+</script>

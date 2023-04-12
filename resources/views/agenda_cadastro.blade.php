@@ -35,5 +35,5 @@
         {{ $errors->first('repeticoes') }}
     @endif
     <br>
-    <button type="submit">ENVIAR</button>
+    <button type="submit">AGENDAR</button>
 </form>

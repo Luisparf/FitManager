@@ -15,9 +15,6 @@ class CategoriaSeeder extends Seeder
     public function run()
     {
         Categoria::create([
-            'categoria' => 'Favoritos'
-        ]);
-        Categoria::create([
             'categoria' => 'Peito']);
         Categoria::create([
             'categoria' => 'Costas'

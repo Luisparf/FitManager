@@ -25,7 +25,7 @@
               <br><br>
               <div class="info-extra">
                 <img src="{{ asset($agenda->treino->caminho_imagem) }}" alt="{{ $agenda->treino->nome }}">
-                <p>{{ $agenda->treino->descricao }}</p>
+                <p>{{ $agenda->treino->info_extra }}</p>
                 <form action="{{ route('agenda-delete', ['id' => $agenda->id]) }}" method="POST">
                   @csrf
                   @method('DELETE')

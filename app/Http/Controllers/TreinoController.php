@@ -8,13 +8,19 @@ use App\Models\Treino;
 use App\Models\Categoria;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class TreinoController extends Controller
 {
     public function index(){
         $treinos = Treino::all();
         $categorias = Categoria::all();
-        return view('treinos',['treinos' => $treinos,'categorias' => $categorias]);
+        $favoritos = DB::table('favoritos')
+        ->join('treinos', 'favoritos.treino_id', '=', 'treinos.id')
+        ->where('favoritos.user_id', Auth::user()->id)
+        ->select('treinos.*')
+        ->get();
+        return view('treinos',['treinos' => $treinos,'categorias' => $categorias, 'favoritos' => $favoritos]);
     }
 
     public function cadastro(){
@@ -60,9 +66,9 @@ class TreinoController extends Controller
         if (Auth::user()->id == $treino->user_id) {
             Storage::delete(str_replace('storage/', 'public/', $treino->caminho_imagem));
             $treino->delete();
-            return redirect()->route('treinos')->with('success', 'Treino deletado com sucesso');
+            return redirect()->route('treinos')->with('success', 'Treino excluido com sucesso');
         } else {
-            return redirect()->route('treinos')->with('error', 'Você não tem permissão para deletar este treino');
+            return redirect()->route('treinos')->with('error', 'Você não tem permissão para excluir este treino');
         }
     }
 }
