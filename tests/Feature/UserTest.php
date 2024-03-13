@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use Inertia\Testing\Assert as InertiaAssert;
 use Tests\TestCase;
+use Illuminate\Support\Facades\Request;
+
 
 class UsersTest extends TestCase
 {
@@ -46,9 +48,10 @@ class UsersTest extends TestCase
 
     public function test_users_index_renders_with_data()
     {
-        $this->actingAs($user = User::factory()->create());
-
+        $this->actingAs(User::factory()->create()->first());
+        $user = User::factory()->count(10)->create();
         $response = $this->get(route('users'));
+
 
         $response->assertStatus(200)
             ->assertInertia(function ($assert) use ($user) {
@@ -72,6 +75,21 @@ class UsersTest extends TestCase
                     );
             });
     }
+    public function test_users_route_returns_users()
+    {
+        $user = User::factory()->create()->first();
+        // $users = User::factory()->create(10)->first();
+        $this->actingAs($user);
+
+        $response = $this->get(route('users'));
+        $response->assertStatus(200);
+        $response->assertInertiaViewIs('Users/Index');
+        $response->assertPropCount('users', 1);
+        $response->assertPropValue('users', function ($value) use ($user) {
+            return $value['id'] === $user->id;
+        });
+    }
+
 }
 
 
